@@ -1,0 +1,19 @@
+SecComFrame is written for the system administrator (SA) who is required to meet formal complaince guide-lines. Often, those SAs do not have extensive security training or a degree in computer science. 
+
+They often have tools allowed/dictated at their site. These tools could be:
+
+1. Shell scripts
+2. Puppet
+3. Ansible
+4. Chef
+5. Salt
+6. etc...etc...etc...
+
+Often those SAs use an ITIL style deployment process. That is, changes are detailed out before they are made and each one must go through a formal approval process. This process can take days or weeks, depending on the site's requirements. 
+
+Commercial vendors may wish to sell products to those sites. Thus they may have a faster deployment process and wish to ensure their products work on a compliant system. 
+
+Openness in code helps sites review and approve SecComFrame for their site. 
+
+
+
