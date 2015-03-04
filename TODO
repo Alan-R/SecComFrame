@@ -9,6 +9,13 @@ TODO List
 2. Work on repository structure.
 
 3. Coding Style Guide
+   a.  Puppet Code will adhere to style via puppet-lint.  
+   b.  Puppet Style guide can be found here: 
+         https://docs.puppetlabs.com/guides/style_guide.html
+   c.  Puppet Lint Implementation can be found here:
+         http://puppet-lint.com
+   d.  Puppet Vim plugins to adhere to style guide can be found here:
+         https://github.com/rodjek/vim-puppet
 
 4. License (Must include "free" and "use at your own risk")
 
