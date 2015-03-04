@@ -1,0 +1,70 @@
+# Proposed layout by task. 
+
+# Issues it solves:
+# 1. Different operating systems require different tasks.
+# 2. Different versions of the *same* OS use different STIG finding IDs.
+# 3. A site can implement a task at a time.
+# 4. Within the tool subsection of the task, the tool's best practices can
+#    be observed. That is, under accounts/puppet is a standard Puppet 
+#    module called accounts. That module can be pulled in to Forge.mil, 
+#    Puppetlabs forge, or a site's own $module_path. 
+# 5. "By task" seems a bit more stable and identifiable than GENID or CVE. 
+# 5.1. Admitting that there will be some size differences in tasks. 
+# 5.2. Not sure exactly how many tasks yet. Maybe 75-100?
+# 6. People can contribute in areas they prefer.
+
+# Problems it causes:
+# 1. Harder to just pull in just the "Tool X" content. 
+# 2. Coding discipline needed for different tools to be supported
+#    at the same level.
+
+
+# Hypothetical tree layout.
+
+.
+|-- accounts
+|   |-- ansible
+|   |-- puppet
+|   |   `-- accounts
+|   |       |-- files
+|   |       |-- manifests
+|   |       |-- spec
+|   |       `-- templates
+|   `-- shell
+|-- audit
+|   |-- ansible
+|   |-- puppet
+|   |   `-- audit
+|   |       |-- files
+|   |       |-- manifests
+|   |       |-- spec
+|   |       `-- templates
+|   `-- shell
+|-- file_ownership
+|   |-- ansible
+|   |-- puppet
+|   |   `-- file_ownership
+|   |       |-- files
+|   |       |-- manifests
+|   |       |-- spec
+|   |       `-- templates
+|   `-- shell
+|-- filesystem_perms
+|   |-- ansible
+|   |-- puppet
+|   |   `-- filesystem_perms
+|   |       |-- files
+|   |       |-- manifests
+|   |       |-- spec
+|   |       `-- templates
+|   `-- shell
+`-- ssh
+    |-- ansible
+    |-- puppet
+    |   `-- ssh
+    |       |-- files
+    |       |-- manifests
+    |       |-- spec
+    |       `-- templates
+    `-- shell
+
