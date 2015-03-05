@@ -14,13 +14,12 @@
 # pertains to Puppet here.  You can leverage lookups to determine
 # what compliance you're actually doing, and then do conditionals
 # based on the results of those lookups.  
-#
 # So, while each grouping below is good, by having an array of 
 # "supported compliances" passed back into Puppet, you can 
 # compile the total of all things you need to support within the
 # below list automatically.  I haven't fully fleshed out the 
 # hierarchy in my head yet, but I think this has promise on the 
-# Puppet side.  
+# Puppet side.  --JMS
 
 accounts
 audio
