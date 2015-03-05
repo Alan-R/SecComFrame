@@ -1,0 +1,37 @@
+# First draft of task list. 
+
+# Taken by skimming the RHEL 5 STIG. My assumption is that we
+# can go over the list and improve it. Possibly more or fewer 
+# groupings, or sub-groupings. Tasks should be big enough to 
+# solve the problem and small enough to not include the 
+# kitchen sink.
+
+# Once the groups are defined we need to associate 
+# IDs (V, CVE, GENID, etc) to a task. That way someone can look
+# up an ID and see which group deals with it. 
+
+accounts
+audio
+audit
+boot
+core_dumps
+cron
+dhcp
+fs_exports
+fs_perms
+ftp
+graphical_interface
+ipv6
+ldap
+mount
+packages
+root_account
+scanning
+smtp
+snmp
+ssh
+sysctl
+syslog
+time
+usb
+xinet_svcs
