@@ -1,0 +1,215 @@
+## This file contains the auditctl rules that are loaded
+## whenever the audit daemon is started via the initscripts.
+## The rules are simply the parameters that would be passed
+## to auditctl.
+##
+## For more information see:
+##      http://people.redhat.com/sgrubb/audit/audit-faq.txt
+##      http://people.redhat.com/sgrubb/audit/
+##
+## Where there are GENIDs they are for RHEL 5.
+## This may well cross over for Solaris. That needs
+## to be tested. It would be great to have one good file for
+## everything.
+
+##################################
+
+## First rule - delete all
+-D
+
+## Increase the buffers to survive stress events.
+## Make this bigger for busy systems. Started at 320.
+## Otherwise we have lots of false stiff in /var/log/messages
+-b 8192
+
+## Set failure mode to panic
+## Change by Leam from "-f 2" to "-f 1"
+## This means we won't halt the box if something simple happens.
+-f 1
+
+
+## NOTE:
+## If these rules generate too much spurious data for your tastes, limit the
+## the syscall file rules with a directory, like -F dir=/etc
+## You can search for the results on the key fields in the rules
+##
+## Note that we might want the above in case Oracle or some
+## other application creates a lot of chatter.
+##
+## (GEN002880: CAT II) The IAO will ensure the auditing software can
+## record the following for each audit event:
+##- Date and time of the event
+##- Userid that initiated the event
+##- Type of event
+##- Success or failure of the event
+##- For I&A events, the origin of the request (e.g., terminal ID)
+##- For events that introduce an object into a user?s address space, and
+##  for object deletion events, the name of the object, and in MLS
+##  systems, the object?s security level.
+##
+## These should NOT be in the file.
+# GEN001060
+# -a exclude,never -Fmsgtype=USER_START
+# -a exclude,never -Fmsgtype=USER_LOGIN
+# -a exclude,never -Fmsgtype=USER_AUTH
+# -a exclude,never -Fmsgtype=USER_END
+# -a exclude,never -Fmsgtype=USER_ACCT
+
+## Things that could affect time
+# GEN002760-3
+# GEN002760-4
+# GEN002760-5
+# GEN002760-6
+# RHEL-06-000165
+# RHEL-06-000167
+# RHEL-06-000169
+# RHEL-06-000171
+-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
+-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
+-a always,exit -F arch=b32 -S clock_settime -F a0=0 -k time-change
+-a always,exit -F arch=b64 -S clock_settime -F a0=0 -k time-change
+
+## Things that affect adding users/groups
+# GEN002750
+-w /usr/sbin/useradd -p wa -k useradd
+-w /usr/sbin/groupadd -p wa -k groupadd
+# GEN002753
+## Things that affect removing users/groups
+-w /usr/sbin/userdel -p wa -k userdel
+-w /usr/sbin/groupdel -p wa -k groupdel
+# GEN002751
+-w /usr/sbin/usermod -p x -k usermod
+-w /usr/sbin/groupmod -p x -k groupmod
+
+## Things that affect identity
+# GEN002750
+# GEN002751
+# GEN002752
+# RHEL-06-000174
+# RHEL-06-000176
+# RHEL-06-000177
+-w /etc/group -p wa -k identity
+-w /etc/passwd -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/security/opasswd -p wa -k identity
+
+## Things that could affect system locale
+# GEN002760-7
+# GEN002760-8
+# RHEL-06-000182
+-a always,exit -F arch=b32 -S sethostname -S setdomainname -k system-locale
+-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale
+
+## (GEN002900: CAT III) The IAO will ensure audit files are retained at
+## least one year; systems containing SAMI will be retained for five years.
+##
+## Site action - no action in config files
+
+## GEN002800 CAT II
+-w /var/log/lastlog -p wa -k logins
+-w /var/log/faillog -p wa -k logins
+
+##- Discretionary access control permission modification (unsuccessful
+## and successful use of chown/chmod)
+# GEN002820
+# GEN002820-2
+# GEN002820-3
+# GEN002820-4
+# GEN002820-5
+# GEN002820-6
+# GEN002820-7
+# GEN002820-8
+# GEN002820-9
+# GEN002820-10
+# GEN002820-11
+# GEN002820-12
+# GEN002820-13
+# RHEL-06-000184
+# RHEL-06-000185
+# RHEL-06-000186
+# RHEL-06-000187
+# RHEL-06-000188
+# RHEL-06-000189
+# RHEL-06-000190
+# RHEL-06-000191
+# RHEL-06-000192
+# RHEL-06-000193
+# RHEL-06-000194
+# RHEL-06-000195
+# RHEL-06-000196
+-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat  -k perm_mod
+-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat  -k perm_mod
+-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -S chown32 -S fchown32 -S lchown32 -k perm_m
+od
+-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -k perm_mod
+-a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr
+-k perm_mod
+-a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr
+-k perm_mod
+
+##- Unauthorized access attempts to files (unsuccessful)
+## Removed "-S open_by_handle_at" as it was introduced in kernel 2.6.39. --lh
+# GEN002720
+# GEN002720-2
+# GEN002720-3
+# GEN002720-4
+# GEN002720-5
+# RHEL-06-000197
+-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -k access
+-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -k access
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -k access
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -k access
+
+##- Files and programs deleted by the user (successful and unsuccessful)
+# GEN002740
+# GEN002740
+# GEN002740-2
+# RHEL-06-000200
+-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -S rmdir  -k delete
+-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -S rmdir  -k delete
+
+# GEN002825-3
+# GEN002825-5
+# RHEL-06-000202
+-w /sbin/insmod -p x -k modules
+-w /sbin/rmmod -p x -k modules
+-w /sbin/modprobe -p x -k modules
+
+## Removed finit_module as it does not seem to be a syscall.
+# GEN002825
+# GEN002825-2
+# RHEL-06-000202
+-a always,exit -F arch=b32 -S init_module -k module-load
+-a always,exit -F arch=b64 -S init_module -k module-load
+-a always,exit -F arch=b32 -S delete_module -k module-unload
+-a always,exit -F arch=b64 -S delete_module -k module-unload
+
+## Make the configuration immutable - reboot is required to change audit rules
+## Changed by Leam. Commented out. We do not want things to change without a restart
+## and we don't want a bunch of issues to be discovered when they are rebooted
+## for patching.
+##
+# -e 2
+
+## (GEN002760-2: CAT II)
+-w /etc/audit/audit.rules
+
+## (GEN002760-10: CAT II)
+-a exit,always -F arch=b32 -S sched_setscheduler
+-a exit,always -F arch=b64 -S sched_setscheduler
+
+# GEN002760-9
+-a exit,always -F arch=b32 -S sched_setparam
+-a exit,always -F arch=b64 -S sched_setparam
+
+# RHEL-06-000173
+-w /etc/localtime -p wa -k time-change
+
+# RHEL-06-000201
+-w /etc/sudoers -p wa -k actions
+
+
+
+
+

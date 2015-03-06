@@ -1,0 +1,140 @@
+# This file contains the auditctl rules that are loaded
+# whenever the audit daemon is started via the initscripts.
+# The rules are simply the parameters that would be passed
+# to auditctl.
+
+# These rules are adapted from Steve Grubb's recommendations
+# as well as stuff the STIG reuires. 
+# See Steve's page for more info:
+#   https://people.redhat.com/sgrubb/audit/index.html
+
+###################################
+# First rule - delete all
+-D
+
+# Increase the buffers to survive stress events.
+# Make this bigger for busy systems
+-b 320
+
+# Commented out. 
+# -e 1
+
+-a exit,always -F arch=b32 -S open -F success=0
+-a exit,always -F arch=b64 -S open -F success=0
+-a exit,always -F arch=b32 -S unlink -S rmdir
+-a exit,always -F arch=b64 -S unlink -S rmdir
+-a exit,always -F arch=b32 -S stime -S acct -S reboot -S swapon
+-a exit,always -F arch=b64 -S acct -S reboot -S swapon
+-a exit,always -F arch=b32 -S settimeofday -S setrlimit -S setdomainname
+-a exit,always -F arch=b64 -S settimeofday -S setrlimit -S setdomainname
+-a exit,always -F arch=b32 -S sched_setparam -S sched_setscheduler
+-a exit,always -F arch=b64 -S sched_setparam -S sched_setscheduler
+-a exit,always -F arch=b32 -S chmod -S fchmod -S chown -S chown32 -S fchown
+-a exit,always -F arch=b64 -S chmod -S fchmod -S chown -S fchown
+-a exit,always -F arch=b32 -S fchown32 -S lchown -S lchown32
+-a exit,always -F arch=b64 -S lchown
+-a exit,always -F arch=b64 -S open -F success=0
+-a exit,always -F arch=b64 -S unlink -S rmdir
+-a exit,always -F arch=b64 -S open -F success=0
+-a exit,always -F arch=b64 -S unlink -S rmdir
+-a exit,always -F arch=b32 -S openat -F exit=-EPERM
+-a exit,always -F arch=b64 -S openat -F exit=-EACCES
+-a exit,always -F arch=b32 -S truncate -F exit=-EPERM
+-a exit,always -F arch=b64 -S truncate -F exit=-EACCES
+-a exit,always -F arch=b32 -S ftruncate -F exit=-EPERM
+-a exit,always -F arch=b64 -S ftruncate -F exit=-EACCES
+-a exit,always -F arch=b32 -S rmdir
+-a exit,always -F arch=b64 -S rmdir
+-a exit,always -F arch=b32 -S adjtimex
+-a exit,always -F arch=b64 -S adjtimex
+-a exit,always -F arch=b32 -S settimeofday
+-a exit,always -F arch=b64 -S settimeofday
+-a exit,always -F arch=b32 -S stime
+-a exit,always -F arch=b64 -S stime
+-a exit,always -F arch=b32 -S clock_settime
+-a exit,always -F arch=b64 -S clock_settime
+-a exit,always -F arch=b32 -S sethostname
+-a exit,always -F arch=b64 -S sethostname
+-a exit,always -F arch=b32 -S setdomainname
+-a exit,always -F arch=b64 -S setdomainname
+-a exit,always -F arch=b32 -S sched_setparam
+-a exit,always -F arch=b64 -S sched_setparam
+-a exit,always -F arch=b32 -S fchmodat
+-a exit,always -F arch=b64 -S fchmodat
+-a exit,always -F arch=b32 -S fchownat
+-a exit,always -F arch=b64 -S fchownat
+-a exit,always -F arch=b32 -S sethostname
+-a exit,always -F arch=b64 -S sethostname
+-a exit,always -F arch=b32 -S setxattr
+-a exit,always -F arch=b64 -S setxattr
+-a exit,always -F arch=b32 -S lsetxattr
+-a exit,always -F arch=b64 -S lsetxattr
+-a exit,always -F arch=b32 -S fsetxattr
+-a exit,always -F arch=b64 -S fsetxattr
+-a exit,always -F arch=b32 -S removexattr
+-a exit,always -F arch=b64 -S removexattr
+-a exit,always -F arch=b32 -S lremovexattr
+-a exit,always -F arch=b64 -S lremovexattr
+-a exit,always -F arch=b32 -S fremovexattr
+-a exit,always -F arch=b64 -S fremovexattr
+-a exit,always -F arch=b32 -S creat -F exit=-EPERM
+-a exit,always -F arch=b64 -S creat -F exit=-EPERM
+-a exit,always -F arch=b32 -S creat -F exit=-EACCES
+-a exit,always -F arch=b64 -S creat -F exit=-EACCES
+-a exit,always -F arch=b32 -S unlink
+-a exit,always -F arch=b64 -S unlink
+-a exit,always -S unlink
+-a exit,always -F arch=b32 -S sched_setscheduler
+-a exit,always -F arch=b64 -S sched_setscheduler
+-a exit,always -F arch=b32 -S delete_module
+-a exit,always -F arch=b64 -S delete_module
+-a exit,always -F arch=b32 -S init_module
+-a exit,always -F arch=b64 -S init_module
+-a exit,always -F arch=b32 -S openat -F success=0
+-a exit,always -F arch=b64 -S openat -F success=0
+-a exit,always -F arch=b32 -S truncate -F success=0
+-a exit,always -F arch=b64 -S truncate -F success=0
+-a exit,always -F arch=b32 -S ftruncate -F success=0
+-a exit,always -F arch=b64 -S ftruncate -F success=0
+-a exit,always -F arch=b64 -S creat -F success=0
+-a exit,always -F arch=b32 -S creat -F success=0
+-a exit,always -F arch=b64 -S fsetxattr
+-a exit,always -F arch=b32 -S fsetxattr
+-a exit,always -F arch=b64 -S removexattr
+-a exit,always -F arch=b32 -S removexattr
+-a exit,always -F arch=b64 -S fremovexattr
+-a exit,always -F arch=b32 -S fremovexattr
+-a exit,always -F arch=b64 -S fchmodat
+-a exit,always -F arch=b32 -S fchmodat
+-a exit,always -F arch=b64 -S delete_module
+-a exit,always -F arch=b32 -S delete_module
+-a exit,always -F arch=b64 -S init_module
+-a exit,always -F arch=b32 -S init_module
+
+
+-w /etc/audit/auditd.conf
+-w /etc/audit/audit.rules
+-w /usr/sbin/groupdel -p x
+-w /var/log/faillog -p wa
+-w /var/log/lastlog -p wa
+-w /sbin/insmod -p x
+-w /sbin/modprobe -p x
+-w /sbin/rmmod -p x
+-w /etc/audit/audit.rules
+-w /usr/sbin/useradd -p x -k useradd
+-w /usr/sbin/groupadd -p x -k groupadd
+-w /etc/passwd -p a -k passwd
+-w /etc/shadow -p a -k shadow
+-w /etc/group -p a -k group
+-w /etc/gshadow -p a -k gshadow
+-w /usr/sbin/usermod -p x -k usermod
+-w /usr/sbin/groupmod -p x -k groupmod
+-w /etc/passwd -p w -k passwd
+-w /etc/shadow -p w -k shadow
+-w /etc/group -p w -k group
+-w /etc/gshadow -p w -k gshadow
+-w /usr/bin/passwd -p x -k passwd
+-w /usr/sbin/userdel -p x
+
+-w /sbin/modprobe -p x -k modules
+-w /sbin/rmmod -p x -k modules
