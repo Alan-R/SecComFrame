@@ -18,7 +18,7 @@ class audit::config {
       $audit_rules_source = 'puppet://$::server/modules/audit/rhel5.audit.rules'
     } else {
       notify 'Sorry, we don\'t serve those kind here.'
-   }
+    }
   }
 
   file { '/etc/audit/auditd.conf':
@@ -30,6 +30,3 @@ class audit::config {
   }
 
 }
-
-
-
