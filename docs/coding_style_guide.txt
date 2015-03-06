@@ -31,4 +31,19 @@ Coding Style Guide
    d.  That said, I do want to track code coverage and remediation 
        percentages for each tool and task. 
 
+5.  Commenting
+   a.  Each file/manifest/recipe should be documented
+   b.  Each documentation should begin at the top of the file enumerating:
+     1.  Purpose of file
+     2.  Name of file
+     3.  Special considerations for file
+     4.  "other" important info
+     5.  One blank commented line at end of header for space/clarity
+       Ex. Below:
+
+
+# audit.pp
+# This manifest manages the auditing facility
+# Make sure you properly engage file per-OS and OS version.
+# 
 
