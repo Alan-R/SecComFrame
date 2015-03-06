@@ -2,7 +2,7 @@
 
 class audit::config {
   File {
-    ensure  => present,
+    ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
@@ -12,13 +12,13 @@ class audit::config {
 
   if $::osfamily == 'RedHat' {
     $audit_config = '/etc/audit/auditd.conf'
-    if $::operatingsystemmajrelease == '6' {
-      $audit_rules_source = 'puppet://$::server/modules/audit/rhel6.audit.rules'
-    } elsif $::operatingsystemmajrelease == '5' {
-      $audit_rules_source = 'puppet://$::server/modules/audit/rhel5.audit.rules'
-    } else {
-      notify 'Sorry, we don\'t serve those kind here.'
-    }
+      if $::operatingsystemmajrelease == '6' {
+        $audit_rules_source = 'puppet:///modules/audit/rhel6.audit.rules'
+      } elsif $::operatingsystemmajrelease == '5' {
+        $audit_rules_source = 'puppet:///modules/audit/rhel5.audit.rules'
+      } else {
+        notify 'Sorry, we don\'t serve those kind here.'
+      }
   }
 
   file { '/etc/audit/auditd.conf':
@@ -28,5 +28,4 @@ class audit::config {
   file { '/etc/audit/audit.rules':
     source  => $audit_rules_source
   }
-
 }
