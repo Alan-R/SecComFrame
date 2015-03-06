@@ -2,4 +2,5 @@ There are several "blank.txt" files laying around. For some reason git
 doesn't want to push up an empty directory so the blank.txt file is 
 there to keep the tree intact.
 
+... For manifests that don't have a template, for instance, the directory is completely unnecessary.  Do we wish to have them there whether needed or not?  --JMS
 
