@@ -1,0 +1,34 @@
+Coding Style Guide
+==================
+
+1. Puppet
+   a.  Puppet Code will adhere to style via puppet-lint.  
+   b.  Puppet Style guide can be found here: 
+         https://docs.puppetlabs.com/guides/style_guide.html
+   c.  Puppet Lint Implementation can be found here:
+         http://puppet-lint.com
+   d.  Puppet Vim plugins to adhere to style guide can be found here:
+         https://github.com/rodjek/vim-puppet
+   e.  Puppet modules should have rspec tests
+         http://rspec-puppet.com/
+
+2. Shell
+   a.  Shell code will adhere to Bourne shell constructs
+       as much as possible. This keeps the code portable.
+   b.  Use functions. Keep them in a sourced file. 
+   
+3. Documentation
+   a.  I (lh) am not sure we want to document every VULNID in
+       every bit of code. 
+   b.  We do need some way to say "Problem X is fixed in Y."
+
+4. Tests
+   a.  While still a testing newbie (lh), I'm convinced we should
+       have tests for our tasks. 
+   b.  This could be serverspec or similar. 
+   c.  While OpenSCAP is a great tool, I don't want to have to run
+       it every time we try something.
+   d.  That said, I do want to track code coverage and remediation 
+       percentages for each tool and task. 
+
+

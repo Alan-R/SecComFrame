@@ -8,24 +8,22 @@ TODO List
 
 2. Work on repository structure.
    a.  See proposed idea in file layout_by_task.txt
+   b.  I've (lh) put stuff in the tasks/audit directory as an example.
 
 3. Coding Style Guide
-   a.  Puppet Code will adhere to style via puppet-lint.  
-   b.  Puppet Style guide can be found here: 
-         https://docs.puppetlabs.com/guides/style_guide.html
-   c.  Puppet Lint Implementation can be found here:
-         http://puppet-lint.com
-   d.  Puppet Vim plugins to adhere to style guide can be found here:
-         https://github.com/rodjek/vim-puppet
-   e.  Puppet modules should have rspec tests
-         http://rspec-puppet.com/
+   a.  See docs/coding_style_guide.txt.
 
 4. License (Must include "free" and "use at your own risk")
 
 5. General assumptions for contributors.
 
 6. Links to other information.
+   a.  Have the docs/ directory for this.
 
 7. Initial target list.
-
+   a.  RHEL 5 and 6 with Puppet and Shell. 
+   b.  Others as developers come along.
+   c.  RHEL 7 should/may be similar so we'll be a few bits ahead.
+   d.  This should also work on OEL and SLES, for the most part.
+   
  
