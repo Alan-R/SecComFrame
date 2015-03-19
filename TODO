@@ -25,5 +25,7 @@ TODO List
    b.  Others as developers come along.
    c.  RHEL 7 should/may be similar so we'll be a few bits ahead.
    d.  This should also work on OEL and SLES, for the most part.
-   
+       1. Is there a reason not to use "osfamily" for decision trees?
+   f.  Oracle seems to have put out good puppet content for Sol 11.
+      
  
