@@ -1,6 +1,14 @@
 {
   "name":  "audit",
-  "author":  "lhall",
+  "author":  "SecComFrame",
   "version":  "0.1.0",
+  "summary": "Controls the audit system on Red Hat family servers.",
+  "tags":[ "RedHat", "audit"],
+  "operatingsystem_support": [
+    {
+    "osfamily":"RedHat",
+    "operatingsystemmajrelease":[ "5", "6"]
+    }
+    ]
 }
 
