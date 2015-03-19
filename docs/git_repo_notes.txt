@@ -4,3 +4,10 @@ there to keep the tree intact.
 
 ... For manifests that don't have a template, for instance, the directory is completely unnecessary.  Do we wish to have them there whether needed or not?  --JMS
 
+... My first answer is "yeah", based on wanting a "new task" script that lays down all
+"the normal stuff" for your tree. In my mind, having a "spec" directory reminds me that
+I need to be writing tests.
+
+In truth, we can probably do without unused directories when a module is "ready for production". 
+During the initial development phase does it hurt to keep them there, just in case?
+
