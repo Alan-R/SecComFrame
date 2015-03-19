@@ -28,4 +28,14 @@ TODO List
        1. Is there a reason not to use "osfamily" for decision trees?
    f.  Oracle seems to have put out good puppet content for Sol 11.
       
+8. Do we want to use tools that do not come with the OS, for development?
+   a. I would prefer to have an on-disk equivalent to jsonlint.org.
+   b. A tool for code coverage would be nice.
+   c. The issue is that some tools require later versions of things Puppet uses,
+      thus we'd run the risk of making something that doesn't work on our target
+      operating systems. 
+   d. Which boils down to needed a dev/test environment that is not the dev workstation. 
+      1. AWS instances for test runs?
+      2. AWS instance for the puppet server(s)?
+      3. Other options?
  
