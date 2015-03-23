@@ -15,58 +15,48 @@
 #    new ones?
 #
 
-require 'rubygems'
-require 'nokogiri'
 
-infile5 = '5_stig.infile'
-infile6 = '6_stig.infile'
+$vulns = Hash.new
+duplicate_vulns = Array.new
 
-f5 = File.open(infile5)
-f6 = File.open(infile6)
-
-doc5 = Nokogiri::XML(f5)
-doc6 = Nokogiri::XML(f6)
-
-vulns = Hash.new
-
-def new_vuln(group)
-  #print "#{group.attributes['id'].value}:\t"
-  #print "#{group.xpath('title').text} \t"
-  #rule_severity = group.xpath('Rule').attributes['severity'].value
-  #rule_severity = group.xpath('Rule').attr('severity')
-  #print "#{rule_severity} \t"
-  #rule_title = group.xpath('Rule/title').text
-  #puts "#{rule_title}"
-  puts "\n"
+def new_vuln(vuln_number, group)
+    vuln = Hash.new
+    vuln['title'] = group.xpath('Rule/title').text
+    vuln['severity'] = group.xpath('Rule').attr('severity')
+    $vulns[vuln_number] = vuln
 end
 
-def dup_vuln(group)
-  puts "Not used yet."
-end
+# At present this script requires the STIG files be munged.
+# The first three lines, containing the xml scheme and Benchmark
+# line, must be reduced to just:
+#   <Benchmark>
 
-doc5.xpath('//Group').each do  |group|
-  vuln_number = group.attributes['id']
-  unless vulns.include? vuln_number
-    vulns[vuln_number] = Hash.new
-    vulns[vuln_number]['title'] = group.xpath('Rule/title').text
-    vulns[vuln_number]['severity'] = group.xpath('Rule').attr('severity')
+in_files = %w(5_stig.infile 6_stig.infile)
+
+in_files.each do |file|
+  f = File.open(file)
+  doc = Nokogiri::XML(f)
+  doc.xpath('//Group').each do  |group|
+    vuln_number = group.attributes['id']
+    if $vulns.has_key? vuln_number
+      duplicate_vulns.push(vuln_number)
+    end
+    unless $vulns[vuln_number]
+      new_vuln(vuln_number, group)
+    end
   end
+  f.close
 end
 
-doc6.xpath('//Group').each do  |group|
-  vuln_number = group.attributes['id']
-  unless vulns.include? vuln_number
-    vulns[vuln_number] = Hash.new
-    vulns[vuln_number]['title'] = group.xpath('Rule/title').text
-    vulns[vuln_number]['severity'] = group.xpath('Rule').attr('severity')
-  end
+$vulns.each_key do | vul_id |
+  id = vul_id
+  sev = $vulns[vul_id]['severity']
+  title = $vulns[vul_id]['title']
+  printf("%-8s %-8s %-100s \n", id, sev, title)
 end
 
-vulns.each_key do | vul_id |
-  puts "#{vul_id}:"
-  puts "#{vulns[vul_id]['severity']}"
-  puts "#{vulns[vul_id]['title']} "
+if duplicate_vulns.count > 0
+  puts "Duplicate Vulnerabilities IDs:"
+  puts duplicate_vulns
 end
 
-f5.close
-f6.close
