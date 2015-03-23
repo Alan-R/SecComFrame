@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='STIG_unclass.xsl'?>
+<Benchmark xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http ://www.w3.org/2001/XMLSchema-instance" xmlns:cpe="http://cpe.mitre.org/language/2.0" xmlns:dc="http://purl.org/dc/ele ments/1.1/" id="RHEL_6_STIG" xml:lang="en" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.1 http://nvd.nist.g ov/schema/xccdf-1.1.4.xsd http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd" xmln s="http://checklists.nist.gov/xccdf/1.1">
+        <status date="2014-12-23">accepted</status>
+                <title>Red Hat Enterprise Linux 6 Security Technical Implementation Guide</title>
+                        <description>The Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) is published as a
+                        tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to t
+                        his document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailb
+                        ox@mail.mil.</description>
+                                <notice id="terms-of-use" xml:lang="en"/>
+                                        <reference href="http://iase.disa.mil">
+                                                        <dc:publisher>DISA, Field Security Operations</dc:publisher>
+                                                                        <dc:source>STIG.DOD.MIL</dc:source>
+                                                                                </reference>
+                                                                                        <plain-text id="release-info">Release: 6 Benchmark Date: 23 Jan 2015</plain-text>
+                                                                                                <version>1</version>
+
+        <Group id="V-38437">
+                        <title>SRG-OS-999999</title>
+                                        <description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description>
+                                                        <Rule id="SV-50237r1_rule" severity="low" weight="10.0">
+                                                                                <version>RHEL-06-000526</version>
+                                                                                                        <title>Automated file system mounting tools must not be enabled unless needed.</title>
+                                                                                                                                <description>&lt;VulnDiscussion&gt;All filesystems that are required for the successful opera
+                                                                                                                                tion of the system should be explicitly listed in "/etc/fstab" by an administrator. New filesystems should not be arb
+                                                                                                                                itrarily introduced via the automounter.
+
+The "autofs" daemon mounts and unmounts filesystems, such as user home directories shared via NFS, on demand. In addi
+tion, autofs can be used to handle removable media, and the default configuration provides the cdrom device as "/misc
+/cd". However, this method of providing access to removable media is not common, so autofs can almost always be disab
+led if NFS is not in use. Even if NFS is required, it is almost always possible to configure filesystem mounts static
+ally by editing "/etc/fstab" rather than relying on the automounter. &lt;/VulnDiscussion&gt;&lt;FalsePositives&gt;&lt
+;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;false&lt;/Documentable&gt;&lt;Mi
+tigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&gt;&lt;PotentialImpact
+s&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationControl&gt;&lt;/Mitigation
+Control&gt;&lt;Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IAControls&gt;</description>
+                        <reference>
+                                                        <dc:title>DPMS Target Red Hat 6</dc:title>
+                                                                                        <dc:publisher>DISA FSO</dc:publisher>
+                                                                                                                        <dc:type>DPMS Target</dc:type>
+                                                                                                                                                        <dc:subject>Red Hat 6</dc:subject>
+                                                                                                                                                                                        <dc:identifier>2367</dc:identifier>
+                                                                                                                                                                                                                </reference>
+                                                                                                                                                                                                                                        <ident system="http://iase.disa.mil/cci">CCI-000366</ident>
+                                                                                                                                                                                                                                                                <fixtext fixref="F-43381r1_fix">If the "autofs" service is not needed to dynamically mount NF
+                                                                                                                                                                                                                                                                S filesystems or removable media, disable the service for all runlevels:
+
+# chkconfig --level 0123456 autofs off
+
+Stop the service if it is already running:
+
+# service autofs stop</fixtext>
+                        <fix id="F-43381r1_fix"/>
+                                                <check system="C-45991r1_chk">
+                                                                                <check-content-ref name="M" href="DPMS_XCCDF_Benchmark_RHEL_6_STIG.xml"/>
+                                                                                                                <check-content>To verify the "autofs" service is disabled, run the following command:
+
+
+chkconfig --list autofs
+
+If properly configured, the output should be the following:
+
+autofs 0:off 1:off 2:off 3:off 4:off 5:off 6:off
+
+Verify the "autofs" service is not running:
+
+# service autofs status
+
+If the autofs service is enabled or running, this is a finding.</check-content>
+                        </check>
+                                        </Rule>
+                                                </Group>
+                                                        <Group id="V-38438">
+                                                                        <title>SRG-OS-000062</title>
+                                                                                        <description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description>
+                                                                                                        <Rule id="SV-50238r2_rule" severity="low" weight="10.0">
+                                                                                                                                <version>RHEL-06-000525</version>
+                                                                                                                                                        <title>Auditing must be enabled at boot by setting a kernel parameter.</title>
+                                                                                                                                                                                <description>&lt;VulnDiscussion&gt;Each process on the system carries an "auditable" flag whi
+                                                                                                                                                                                ch indicates whether its activities can be audited. Although "auditd" takes care of enabling this for all processes w
+                                                                                                                                                                                hich launch after it does, adding the kernel argument ensures it is set for every process during boot.&lt;/VulnDiscus
+                                                                                                                                                                                sion&gt;&lt;FalsePositives&gt;&lt;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt
+                                                                                                                                                                                ;false&lt;/Documentable&gt;&lt;Mitigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverri
+                                                                                                                                                                                deGuidance&gt;&lt;PotentialImpacts&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;Mit
+                                                                                                                                                                                igationControl&gt;&lt;/MitigationControl&gt;&lt;Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IACon
+                                                                                                                                                                                trols&gt;</description>
+                                                                                                                                                                                                        <reference>
+                                                                                                                                                                                                                                        <dc:title>DPMS Target Red Hat 6</dc:title>
+                                                                                                                                                                                                                                                                        <dc:publisher>DISA FSO</dc:publisher>
+                                                                                                                                                                                                                                                                                                        <dc:type>DPMS Target</dc:type>
+                                                                                                                                                                                                                                                                                                                                        <dc:subject>Red Hat 6</dc:subject>
+                                                                                                                                                                                                                                                                                                                                                                        <dc:identifier>2367</dc:identifier>
+                                                                                                                                                                                                                                                                                                                                                                                                </reference>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <ident system="http://iase.disa.mil/cci">CCI-000169</ident>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <fixtext fixref="F-43382r2_fix">To ensure all processes can be audited, even those which star
+                                                                                                                                                                                                                                                                                                                                                                                                                                                t prior to the audit daemon, add the argument "audit=1" to the kernel line in "/etc/grub.conf", in the manner below:
+
+kernel /vmlinuz-version ro vga=ext root=/dev/VolGroup00/LogVol00 rhgb quiet audit=1
+
+UEFI systems may prepend "/boot" to the "/vmlinuz-version" argument. </fixtext>
+                        <fix id="F-43382r2_fix"/>
+                                                <check system="C-45992r2_chk">
+                                                                                <check-content-ref name="M" href="DPMS_XCCDF_Benchmark_RHEL_6_STIG.xml"/>
+                                                                                                                <check-content>Inspect the kernel boot arguments (which follow the word "kernel") in
+                                                                                                                "/etc/grub.conf". If they include "audit=1", then auditing is enabled at boot time.
+
+If auditing is not enabled at boot time, this is a finding.</check-content>
+                        </check>
+                                        </Rule>
+                                                </Group>
+                                                        <Group id="V-38439">
+                                                                        <title>SRG-OS-000001</title>
+                                                                                        <description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description>
+                                                                                                        <Rule id="SV-50239r1_rule" severity="medium" weight="10.0">
+                                                                                                                                <version>RHEL-06-000524</version>
+                                                                                                                                                        <title>The system must provide automated support for account management functions.</title>
+                                                                                                                                                                                <description>&lt;VulnDiscussion&gt;A comprehensive account management process that includes a
+                                                                                                                                                                                utomation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. Ent
+                                                                                                                                                                                erprise environments make user account management challenging and complex. A user management process requiring admini
+                                                                                                                                                                                strators to manually address account management functions adds risk of potential oversight.&lt;/VulnDiscussion&gt;&lt
+                                                                                                                                                                                ;FalsePositives&gt;&lt;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;false&lt;/
+                                                                                                                                                                                Documentable&gt;&lt;Mitigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&
+                                                                                                                                                                                gt;&lt;PotentialImpacts&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationCont
+                                                                                                                                                                                rol&gt;&lt;/MitigationControl&gt;&lt;Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IAControls&gt;</
+                                                                                                                                                                                description>
+                                                                                                                                                                                                        <reference>
+                                                                                                                                                                                                                                        <dc:title>DPMS Target Red Hat 6</dc:title>
+                                                                                                                                                                                                                                                                        <dc:publisher>DISA FSO</dc:publisher>
+                                                                                                                                                                                                                                                                                                        <dc:type>DPMS Target</dc:type>
+                                                                                                                                                                                                                                                                                                                                        <dc:subject>Red Hat 6</dc:subject>
+                                                                                                                                                                                                                                                                                                                                                                        <dc:identifier>2367</dc:identifier>
+                                                                                                                                                                                                                                                                                                                                                                                                </reference>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <ident system="http://iase.disa.mil/cci">CCI-000015</ident>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <fixtext fixref="F-43384r1_fix">Implement an automated system for managing user accounts that
+                                                                                                                                                                                                                                                                                                                                                                                                                                                 minimizes the risk of errors, either intentional or deliberate.  If possible, this system should integrate with an e
+                                                                                                                                                                                                                                                                                                                                                                                                                                                 xisting enterprise user management system, such as, one based Active Directory or Kerberos.</fixtext>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <fix id="F-43384r1_fix"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <check system="C-45994r1_chk">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <check-content-ref name="M" href="DPMS_XCCDF_Benchmark_RHEL_6_STIG.xml"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <check-content>Interview the SA to determine if there is an automated system for mana
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ging user accounts, preferably integrated with an existing enterprise user management system.
+
+If there is not, this is a finding.</check-content>
+                        </check>
+                                        </Rule>
+                                                </Group>
+                                                        <Group id="V-38443">
+                                                                        <title>SRG-OS-999999</title>
+                                                                                        <description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description>
+                                                                                                        <Rule id="SV-50243r1_rule" severity="medium" weight="10.0">
+                                                                                                                                <version>RHEL-06-000036</version>
+                                                                                                                                                        <title>The /etc/gshadow file must be owned by root.</title>
+                                                                                                                                                                                <description>&lt;VulnDiscussion&gt;The "/etc/gshadow" file contains group password hashes. Pr
+                                                                                                                                                                                otection of this file is critical for system security.&lt;/VulnDiscussion&gt;&lt;FalsePositives&gt;&lt;/FalsePositive
+                                                                                                                                                                                s&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;false&lt;/Documentable&gt;&lt;Mitigations&gt;&l
+                                                                                                                                                                                t;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&gt;&lt;PotentialImpacts&gt;&lt;/Poten
+                                                                                                                                                                                tialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationControl&gt;&lt;/MitigationControl&gt;&lt;
+                                                                                                                                                                                Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IAControls&gt;</description>
+                                                                                                                                                                                                        <reference>
+                                                                                                                                                                                                                                        <dc:title>DPMS Target Red Hat 6</dc:title>
+                                                                                                                                                                                                                                                                        <dc:publisher>DISA FSO</dc:publisher>
+                                                                                                                                                                                                                                                                                                        <dc:type>DPMS Target</dc:type>
+                                                                                                                                                                                                                                                                                                                                        <dc:subject>Red Hat 6</dc:subject>
+                                                                                                                                                                                                                                                                                                                                                                        <dc:identifier>2367</dc:identifier>
+                                                                                                                                                                                                                                                                                                                                                                                                </reference>
+                                                                                                                                                                                                                                                                                                                                                                                                                        <ident system="http://iase.disa.mil/cci">CCI-000366</ident>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <fixtext fixref="F-43388r1_fix">To properly set the owner of "/etc/gshadow", run the command:
+
+
+# chown root /etc/gshadow</fixtext>
+                        <fix id="F-43388r1_fix"/>
+                                                <check system="C-45998r1_chk">
+                                                                                <check-content-ref name="M" href="DPMS_XCCDF_Benchmark_RHEL_6_STIG.xml"/>
+                                                                                                                <check-content>To check the ownership of "/etc/gshadow", run the command:
+
+$ ls -l /etc/gshadow
+
+If properly configured, the output should indicate the following owner: "root"
+If it does not, this is a finding.</check-content>
+                        </check>
+                                        </Rule>
+                                                </Group>
+
+</Benchmark>
