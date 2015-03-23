@@ -17,7 +17,7 @@ class audit::config {
       } elsif $::operatingsystemmajrelease == '5' {
         $audit_rules_source = 'puppet:///modules/audit/rhel5.audit.rules'
       } else {
-        notify 'Sorry, we don\'t serve those kind here.'
+        notify 'Operating system version not supported.'
       }
   }
 
