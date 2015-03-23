@@ -53,3 +53,20 @@ doc5.xpath('//Group').each do  |group|
   end
 end
 
+doc6.xpath('//Group').each do  |group|
+  vuln_number = group.attributes['id']
+  unless vulns.include? vuln_number
+    vulns[vuln_number] = Hash.new
+    vulns[vuln_number]['title'] = group.xpath('Rule/title').text
+    vulns[vuln_number]['severity'] = group.xpath('Rule').attr('severity')
+  end
+end
+
+vulns.each_key do | vul_id |
+  puts "#{vul_id}:"
+  puts "#{vulns[vul_id]['severity']}"
+  puts "#{vulns[vul_id]['title']} "
+end
+
+f5.close
+f6.close
