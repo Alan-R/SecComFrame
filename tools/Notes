@@ -1,0 +1,12 @@
+1. There's an odd UTF issue on V-827, they seem to have some things odd around the
+   "+" character in the title but not the text. For some reason this would not
+   process on my home machine. Just edited it and things work.
+
+2. Still have to munge the first three lines of the actual U_* STIGs to avoid XML
+   issues. It could easly be my script, but feel free to help out. When the open_stig.rb
+   script is run against the actual STIG, there is no output. When I turn the first
+   three lines into one:
+      <Benchmanrk>
+   then things work. 
+
+
