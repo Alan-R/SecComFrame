@@ -1,0 +1,856 @@
+V-756    medium   The system must require authentication upon booting into single-user and maintenance modes. 
+V-760    medium   Direct logins must not be permitted to shared, default, application, or utility accounts. 
+V-761    medium   All accounts on the system must have unique user or account names. 
+V-762    medium   All accounts must be assigned unique User Identification Numbers (UIDs). 
+V-763    medium   The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, console login prompts. 
+V-765    medium   Successful and unsuccessful logins and logouts must be logged. 
+V-766    medium   The system must disable accounts after three consecutive unsuccessful login attempts. 
+V-768    medium   The delay between login prompts following a failed login attempt must be at least 4 seconds. 
+V-769    medium   The root user must not own the logon session for an application requiring a continuous display. 
+V-770    high     The system must not have accounts configured with blank or null passwords. 
+V-773    medium   The root account must be the only account having a UID of 0. 
+V-774    low      The root user's home directory must not be the root directory (/). 
+V-775    medium   The root account's home directory (other than /) must have mode 0700. 
+V-776    medium   The root account's executable search path must be the vendor default and must contain only absolute paths. 
+V-777    medium   The root account must not have world-writable directories in its executable search path. 
+V-778    medium   The system must prevent the root account from directly logging in except from the system console. 
+V-780    medium   GIDs reserved for system accounts must not be assigned to non-system groups. 
+V-781    low      All GIDs referenced in the /etc/passwd file must be defined in the /etc/group file. 
+V-782    medium   The system must have a host-based intrusion detection tool installed. 
+V-783    medium   System security patches and updates must be installed and up-to-date. 
+V-784    medium   System files and directories must not have uneven access permissions. 
+V-785    medium   All files and directories must have a valid owner. 
+V-786    medium   All network services daemon files must have mode 0755 or less permissive. 
+V-787    medium   System log files must have mode 0640 or less permissive. 
+V-788    medium   All skeleton files (typically those in /etc/skel) must have mode 0644 or less permissive. 
+V-789    medium   NIS/NIS+/yp files must be owned by root, sys, or bin. 
+V-790    medium   NIS/NIS+/yp files must be group-owned by root, sys, or bin. 
+V-791    medium   The NIS/NIS+/yp command files must have mode 0755 or less permissive. 
+V-792    low      Manual page files must have mode 0644 or less permissive. 
+V-793    medium   Library files must have mode 0755 or less permissive. 
+V-794    medium   All system command files must have mode 0755 or less permissive. 
+V-795    medium   All system files, programs, and directories must be owned by a system account. 
+V-796    medium   System files, programs, and directories must be group-owned by a system group. 
+V-797    medium   The /etc/shadow (or equivalent) file must be owned by root. 
+V-798    medium   The /etc/passwd file must have mode 0644 or less permissive. 
+V-800    medium   The /etc/shadow (or equivalent) file must have mode 0400. 
+V-801    medium   The owner, group-owner, mode, ACL, and location of files with the setuid bit set must be documented using site-defined procedures. 
+V-802    medium   The owner, group-owner, mode, ACL and location of files with the setgid bit set must be documented using site-defined procedures. 
+V-803    medium   The system must be checked weekly for unauthorized setuid files as well as unauthorized modification to authorized setuid files. 
+V-804    medium   The system must be checked weekly for unauthorized setgid files as well as unauthorized modification to authorized setgid files. 
+V-805    medium   Removable media, remote file systems, and any file system not containing approved setuid files must be mounted with the "nosuid" option. 
+V-806    low      The sticky bit must be set on all public directories. 
+V-807    medium   All public directories must be owned by root or an application account. 
+V-808    medium   The system and user default umask must be 077. 
+V-810    medium   Default system accounts must be disabled or removed. 
+V-811    medium   Auditing must be implemented. 
+V-812    medium   System audit logs must be owned by root. 
+V-813    medium   System audit logs must have mode 0640 or less permissive. 
+V-814    medium   The audit system must be configured to audit failed attempts to access files and programs. 
+V-815    medium   The audit system must be configured to audit files and programs deleted by the user. 
+V-818    medium   The audit system must be configured to audit login, logout, and session initiation. 
+V-819    medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-821    medium   The inetd.conf file, xinetd.conf file, and the xinetd.d directory must be owned by root or bin. 
+V-822    medium   The xinetd configuration files must have mode 0640 or less permissive. 
+V-823    medium   The services file must be owned by root or bin. 
+V-824    medium   The services file must have mode 0644 or less permissive. 
+V-825    low      Global initialization files must contain the "mesg -n" or "mesg n" commands. 
+V-827    medium   The hosts.lpd file (or equivalent) must not contain a + character. 
+V-828    medium   The hosts.lpd (or equivalent) file must be owned by root, bin, sys, or lp. 
+V-829    medium   The hosts.lpd (or equivalent) must have mode 0644 or less permissive. 
+V-831    medium   The alias file must be owned by root. 
+V-832    medium   The alias file must have mode 0644 or less permissive. 
+V-833    high     Files executed through a mail aliases file must be owned by root and must reside within a directory owned and writable only by root. 
+V-834    medium   Files executed through a mail aliases file must have mode 0755 or less permissive. 
+V-835    low      Sendmail logging must not be set to less than nine in the sendmail.cf file. 
+V-836    medium   The system syslog service must log informational and more severe SMTP service messages. 
+V-837    medium   The SMTP service log file must be owned by root. 
+V-838    medium   The SMTP service log file must have mode 0644 or less permissive. 
+V-840    medium   The ftpusers file must exist. 
+V-841    medium   The ftpusers file must contain account names not allowed to use FTP. 
+V-842    medium   The ftpusers file must be owned by root. 
+V-843    medium   The ftpusers file must have mode 0640 or less permissive. 
+V-845    low      The FTP daemon must be configured for logging or verbose mode. 
+V-846    medium   Anonymous FTP must not be active on the system unless authorized. 
+V-847    high     The TFTP daemon must operate in "secure mode" which provides access only to a single directory on the host file system. 
+V-848    high     The TFTP daemon must have mode 0755 or less permissive. 
+V-849    medium   The TFTP daemon must be configured to vendor specifications, including a dedicated TFTP user account, a non-login shell such as /bin/false, and a home directory owned by the TFTP user. 
+V-850    medium   Any X Windows host must write .Xauthority files. 
+V-867    medium   The Network Information System (NIS) protocol must not be used. 
+V-899    low      All interactive users must be assigned a home directory in the /etc/passwd file. 
+V-900    low      All interactive user home directories defined in the /etc/passwd file must exist. 
+V-901    medium   All user home directories must have mode 0750 or less permissive. 
+V-902    medium   All interactive user home directories must be owned by their respective users. 
+V-903    medium   All interactive user home directories must be group-owned by the home directory owner's primary group. 
+V-904    medium   All local initialization files must be owned by the home directorys user or root. 
+V-905    medium   All local initialization files must have mode 0740 or less permissive. 
+V-906    medium   All run control scripts must have mode 0755 or less permissive. 
+V-907    medium   Run control scripts' executable search paths must contain only absolute paths. 
+V-910    high     Run control scripts must not execute world-writable programs or scripts.
+ 
+V-913    medium   There must be no .netrc files on the system.
+ 
+V-914    low      All files and directories contained in interactive user home directories must be owned by the home directory's owner. 
+V-915    low      All files and directories contained in user home directories must have mode 0750 or less permissive. 
+V-916    medium   The /etc/shells (or equivalent) file must exist. 
+V-917    medium   All shells referenced in /etc/passwd must be listed in the /etc/shells file, except any shells specified for the purpose of preventing logins. 
+V-918    medium   Accounts must be locked upon 35 days of inactivity. 
+V-921    medium   All shell files must be owned by root or bin. 
+V-922    high     All shell files must have mode 0755 or less permissive. 
+V-923    low      The system must be checked for extraneous device files at least weekly. 
+V-924    medium   Device files and directories must only be writable by users with a system account or as configured by the vendor. 
+V-925    medium   Device files used for backup must only be readable and/or writable by root or the backup user. 
+V-928    medium   The Network File System (NFS) export configuration file must be owned by root. 
+V-929    low      The Network File System (NFS) export configuration file must have mode 0644 or less permissive. 
+V-931    medium   All Network File System (NFS) exported system files and system directories must be owned by root. 
+V-932    medium   The Network File System (NFS) anonymous UID and GID must be configured to values without permissions. 
+V-933    medium   The Network File System (NFS) server must be configured to restrict file system access to local hosts. 
+V-935    medium   The Network File System (NFS) server must not allow remote root access. 
+V-936    medium   The "nosuid" option must be enabled on all Network File System (NFS) client mounts. 
+V-940    medium   The system must use an access control program. 
+V-941    medium   The system's access control program must log each system access attempt. 
+V-974    medium   Access to the cron utility must be controlled using the cron.allow and/or cron.deny file(s). 
+V-975    medium   The cron.allow file must have mode 0600 or less permissive. 
+V-976    medium   Cron must not execute group-writable or world-writable programs. 
+V-977    medium   Cron must not execute programs in, or subordinate to, world-writable directories. 
+V-978    medium   Crontab files must have mode 0600 or less permissive, and files in cron script directories must have mode 0700 or less permissive. 
+V-979    medium   Cron and crontab directories must have mode 0755 or less permissive. 
+V-980    medium   Cron and crontab directories must be owned by root or bin. 
+V-981    medium   Cron and crontab directories must be group-owned by root, sys, bin or cron. 
+V-982    medium   Cron logging must be implemented. 
+V-983    medium   The cronlog file must have mode 0600 or less permissive. 
+V-984    medium   Access to the "at" utility must be controlled via the at.allow and/or at.deny file(s). 
+V-985    medium   The at.deny file must not be empty if it exists. 
+V-986    medium   Default system accounts (with the exception of root) must not be listed in the at.allow file or must be included in the at.deny file if the at.allow file does not exist. 
+V-987    medium   The at.allow file must have mode 0600 or less permissive. 
+V-988    medium   The "at" daemon must not execute group-writable or world-writable programs. 
+V-989    medium   The "at" daemon must not execute programs in, or subordinate to, world-writable directories. 
+V-993    high     SNMP communities, users, and passphrases must be changed from the default. 
+V-994    medium   The snmpd.conf file must have mode 0600 or less permissive. 
+V-995    medium   Management Information Base (MIB) files must have mode 0640 or less permissive. 
+V-1010   medium   Public directories must be the only world-writable directories and world-writable files must be located only in public directories. 
+V-1011   low      Inetd or xinetd logging/tracing must be enabled. 
+V-1013   high     The system must be configured to only boot from the system boot device. 
+V-1021   medium   The X server must have the correct options enabled. 
+V-1022   medium   An X server must have none of the following options enabled: -ac, -core (except for debugging purposes), or -nolock.
+ 
+V-1023   medium   The system must not run an Internet Network News (INN) server. 
+V-1025   medium   The /etc/access.conf file must be owned by root. 
+V-1026   medium   The Samba Web Administration Tool (SWAT) must be restricted to the local host or require SSL. 
+V-1027   medium   The /etc/smb.conf file must be owned by root. 
+V-1028   medium   The /etc/smb.conf file must have mode 0644 or less permissive. 
+V-1029   medium   The /etc/smbpasswd file must be owned by root. 
+V-1030   medium   The smb.conf file must use the "hosts" option to restrict access to Samba. 
+V-1032   medium   Users must not be able to change passwords more than once every 24 hours. 
+V-1046   high     Root passwords must never be passed over a network in clear text form. 
+V-1047   medium   The system must not permit root logins using remote access programs such as ssh.
+ 
+V-1048   medium   Audio devices must have mode 0660 or less permissive. 
+V-1049   medium   Audio devices must be owned by root. 
+V-1054   medium   The /etc/access.conf file must have a privileged group owner. 
+V-1055   medium   The /etc/security/access.conf file must have mode 0640 or less permissive. 
+V-1056   medium   The /etc/smb.conf file must be group-owned by root, bin, sys, or system. 
+V-1058   medium   The smbpasswd file must be group-owned by root. 
+V-1059   medium   The smbpasswd file must have mode 0600 or less permissive. 
+V-1061   medium   Audio devices must be group-owned by root, sys, bin, or system. 
+V-1062   low      The root shell must be located in the / file system.
+ 
+V-4083   medium   Graphical desktop environments provided by the system must automatically lock after 15 minutes of inactivity and the system must require users to re-authenticate to unlock the environment.
+
+Applications requiring continuous, real-time screen display (i.e., network management products) require the following and need to be documented with the IAO.
+
+-The logon session does not have administrator rights. 
+-The display station (i.e., keyboard, monitor, etc.) is located in a controlled access area.
+
+
+ 
+V-4084   medium   The system must prohibit the reuse of passwords within five iterations. 
+V-4087   medium   User start-up files must not execute world-writable programs. 
+V-4089   medium   All system start-up files must be owned by root. 
+V-4090   medium   All system start-up files must be group-owned by root, sys, bin, other, or system. 
+V-4091   medium   System start-up files must only execute programs owned by a privileged UID or an application. 
+V-4246   medium   System BIOS or system controllers supporting password protection must have administrator accounts/passwords configured, and no others. 
+V-4247   high     The system must not use removable media as the boot loader. 
+V-4248   high     For systems capable of using GRUB, the system must be configured with GRUB as the default boot loader unless another boot loader has been authorized, justified, and documented using site-defined procedures.
+ 
+V-4249   high     The system boot loader must require authentication. 
+V-4250   medium   The system's boot loader configuration file(s) must have mode 0600 or less permissive. 
+V-4255   high     If the system boots from removable media, it must be stored in a safe or similarly secured container. 
+V-4268   high     The system must not have special privilege accounts, such as shutdown and halt. 
+V-4269   medium   The system must not have unnecessary accounts. 
+V-4273   medium   The /etc/news/incoming.conf (or equivalent) must have mode 0600 or less permissive. 
+V-4274   medium   The /etc/news/infeed.conf (or equivalent) must have mode 0600 or less permissive. 
+V-4275   medium   The /etc/news/readers.conf (or equivalent) must have mode 0600 or less permissive. 
+V-4276   medium   The /etc/news/passwd.nntp file (or equivalent) must have mode 0600 or less permissive. 
+V-4277   medium   Files in /etc/news must be owned by root or news. 
+V-4278   medium   The files in /etc/news must be group-owned by root or news. 
+V-4295   high     The SSH daemon must be configured to only use the SSHv2 protocol. 
+V-4298   medium   Remote consoles must be disabled or protected from unauthorized access. 
+V-4301   medium   The system clock must be synchronized to an authoritative DoD time source. 
+V-4304   medium   The root file system must employ journaling or another mechanism ensuring file system consistency. 
+V-4321   medium   The system must not run Samba unless needed. 
+V-4334   medium   The /etc/sysctl.conf file must be owned by root. 
+V-4335   medium   The /etc/sysctl.conf file must be group-owned by root. 
+V-4336   medium   The /etc/sysctl.conf file must have mode 0600 or less permissive. 
+V-4339   high     The Linux NFS Server must not have the insecure file locking option. 
+V-4342   high     The x86 CTRL-ALT-DELETE key sequence must be disabled. 
+V-4346   medium   The Linux PAM system must not grant sole access to admin privileges to the first user who logs into the console. 
+V-4357   medium   Audit logs must be rotated daily. 
+V-4358   medium   The cron.deny file must have mode 0600 or less permissive. 
+V-4360   low      Cron programs must not set the umask to a value less restrictive than 077. 
+V-4361   medium   The cron.allow file must be owned by root, bin, or sys. 
+V-4364   medium   The "at" directory must have mode 0755 or less permissive. 
+V-4365   medium   The at directory must be owned by root, bin, sys, daemon, or cron. 
+V-4366   medium   "At" jobs must not set the umask to a value less restrictive than 077. 
+V-4367   medium   The at.allow file must be owned by root, bin, or sys. 
+V-4368   medium   The at.deny file must be owned by root, bin, or sys. 
+V-4369   medium   The traceroute command owner must be root. 
+V-4370   medium   The traceroute command must be group-owned by sys, bin, root, or system. 
+V-4371   medium   The traceroute file must have mode 0700 or less permissive. 
+V-4382   high     Administrative accounts must not run a web browser, except as needed for local service administration. 
+V-4384   low      The SMTP service's SMTP greeting must not provide version information. 
+V-4385   medium   The system must not use .forward files. 
+V-4387   high     Anonymous FTP accounts must not have a functional shell. 
+V-4392   medium   If the system is a Network Management System (NMS) server, it must only run the NMS and any software required by the NMS. 
+V-4393   medium   The /etc/syslog.conf file must be owned by root. 
+V-4394   medium   The /etc/syslog.conf file must be group-owned by root, bin, sys, or system. 
+V-4395   medium   The system must only use remote syslog servers (log hosts) that is justified and documented using site-defined procedures. 
+V-4397   medium   The system must be configured with a default gateway for IPv4 if the system uses IPv4, unless the system is a router. 
+V-4398   medium   A system used for routing must not run other network services or applications. 
+V-4399   high     The system must not use UDP for NIS/NIS+. 
+V-4427   medium   All .rhosts, .shosts, or host.equiv files must only contain trusted host-user pairs. 
+V-4428   medium   All .rhosts, .shosts, .netrc, or hosts.equiv files must be accessible by only root or the owner. 
+V-4430   medium   The cron.deny file must be owned by root, bin, or sys. 
+V-4687   high     The rsh daemon must not be running. 
+V-4688   high     The rexec daemon must not be running. 
+V-4689   high     The SMTP service must be an up-to-date version. 
+V-4690   high     The sendmail server must have the debug feature disabled. 
+V-4691   high     The SMTP service must not have a uudecode alias active. 
+V-4692   low      The SMTP service must not have the EXPN feature active. 
+V-4693   low      The SMTP service must not have the Verify (VRFY) feature active. 
+V-4694   low      The sendmail service must not have the wizard backdoor active. 
+V-4695   high     Any active TFTP daemon must be authorized and approved in the system accreditation package. 
+V-4696   medium   The system must not have the UUCP service active. 
+V-4697   high     X displays must not be exported to the world. 
+V-4701   low      The system must not have the finger service active. 
+V-4702   medium   If the system is an anonymous FTP server, it must be isolated to the DMZ network. 
+V-11940  high     The operating system must be a supported release. 
+V-11945  medium   A file integrity tool must be used at least weekly to check for unauthorized file changes, particularly the addition of unauthorized system libraries or binaries, or for unauthorized modification to authorized system libraries or binaries. 
+V-11946  medium   UIDs reserved for system accounts must not be assigned to non-system accounts. 
+V-11947  medium   The system must require passwords contain a minimum of 14 characters. 
+V-11948  medium   The system must require passwords contain at least one uppercase alphabetic character. 
+V-11972  medium   The system must require passwords contain at least one numeric character. 
+V-11973  medium   The system must require passwords contain at least one special character. 
+V-11975  medium   The system must require passwords contain no more than three consecutive repeating characters. 
+V-11976  medium   User passwords must be changed at least every 60 days. 
+V-11977  medium   All non-interactive/automated processing account passwords must be changed at least once per year or be locked. 
+V-11979  medium   The root account must not be used for direct log in. 
+V-11980  medium   The system must log successful and unsuccessful access to the root account. 
+V-11981  medium   All global initialization files must have mode 0644 or less permissive. 
+V-11982  medium   All global initialization files must be owned by root. 
+V-11983  medium   All global initialization files must be group-owned by root, sys, bin, other, system, or the system default. 
+V-11984  medium   All skeleton files and directories (typically in /etc/skel) must be owned by root or bin. 
+V-11985  medium   All global initialization files' executable search paths must contain only absolute paths. 
+V-11986  medium   All local initialization files' executable search paths must contain only absolute paths. 
+V-11987  medium   The .rhosts, .shosts, hosts.equiv, shosts.equiv, /etc/passwd, /etc/shadow, and/or /etc/group files must not contain a plus (+) without defining entries for NIS+ netgroups. 
+V-11988  high     There must be no .rhosts, .shosts, hosts.equiv, or shosts.equiv files on the system. 
+V-11989  medium   The .rhosts file must not be supported in PAM. 
+V-11990  medium   All public directories must be group-owned by root, sys, bin, or an application group. 
+V-11994  medium   Crontabs must be owned by root or the crontab creator. 
+V-11995  medium   Default system accounts (with the exception of root) must not be listed in the cron.allow file or must be included in the cron.deny file, if cron.allow does not exist. 
+V-11996  low      Process core dumps must be disabled unless needed. 
+V-11997  low      The kernel core dump data directory must be owned by root. 
+V-11999  medium   The system must implement non-executable program stacks. 
+V-12002  medium   The system must not forward IPv4 source-routed packets. 
+V-12003  low      A separate file system must be used for user home directories (such as /home or an equivalent). 
+V-12004  medium   The system must log informational authentication data. 
+V-12005  medium   Inetd and xinetd must be disabled or removed if no network services utilizing them are enabled. 
+V-12006  medium   The SMTP service HELP command must not be enabled. 
+V-12010  medium   Unencrypted FTP must not be used on the system. 
+V-12011  medium   All FTP users must have a default umask of 077. 
+V-12014  medium   All .Xauthority files must have mode 0600 or less permissive. 
+V-12016  medium   .Xauthority or X*.hosts (or equivalent) file(s) must be used to restrict access to the X server. 
+V-12017  medium   The .Xauthority utility must only permit access to authorized hosts. 
+V-12018  medium   X Window System connections not required must be disabled. 
+V-12019  medium   The snmpd.conf file must be owned by root. 
+V-12020  medium   The system must not be used as a syslog server (loghost) for systems external to the enclave. 
+V-12021  medium   The syslog daemon must not accept remote messages unless it is a syslog server documented using site-defined procedures. 
+V-12022  medium   The SSH daemon must be configured for IP filtering. 
+V-12023  medium   IP forwarding for IPv4 must not be enabled, unless the system is a router. 
+V-12024  medium   The system must not have a public Instant Messaging (IM) client installed. 
+V-12025  medium   The system must not have any peer-to-peer file-sharing application installed. 
+V-12026  medium   NIS maps must be protected through hard-to-guess domain names. 
+V-12028  medium   The system vulnerability assessment tool, host-based intrusion detection tool, and file integrity tool must notify the SA and the IAO of a security breach or a suspected security breach. 
+V-12030  medium   The system's access control program must be configured to grant or deny system access to specific hosts. 
+V-12038  medium   The /etc/securetty file must be group-owned by root, sys, or bin. 
+V-12039  medium   The /etc/securetty file must be owned by root. 
+V-12040  medium   The /etc/securetty file must have mode 0600 or less permissive. 
+V-12049  medium   Network analysis tools must not be installed. 
+V-12765  medium   The system must use and update a DoD-approved virus scan program. 
+V-22290  medium   The system clock must be synchronized continuously, or at least daily.
+ 
+V-22291  medium   The system must use at least two time sources for clock synchronization. 
+V-22292  low      The system must use time sources local to the enclave. 
+V-22294  medium   The time synchronization configuration file (such as /etc/ntp.conf) must be owned by root. 
+V-22295  medium   The time synchronization configuration file (such as /etc/ntp.conf) must be group-owned by root, bin, or sys. 
+V-22296  medium   The time synchronization configuration file (such as /etc/ntp.conf) must have mode 0640 or less permissive. 
+V-22297  medium   The time synchronization configuration file (such as /etc/ntp.conf) must not have an extended ACL. 
+V-22298  low      The system must limit users to 10 simultaneous system logins, or a site-defined number, in accordance with operational requirements. 
+V-22299  low      The system must display the date and time of the last successful account login upon login. 
+V-22301  low      The system must display a publicly-viewable pattern during a graphical desktop environment session lock. 
+V-22302  medium   The system must enforce compliance of the entire password during authentification. 
+V-22303  medium   The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes. 
+V-22304  medium   The password hashes stored on the system must have been generated using a FIPS 140-2 approved cryptographic hashing algorithm. 
+V-22305  medium   The system must require passwords contain at least one lowercase alphabetic character. 
+V-22306  medium   The system must require at least four characters be changed between the old and new passwords during a password change. 
+V-22307  medium   The system must prevent the use of dictionary words for passwords. 
+V-22308  low      The system must restrict the ability to switch to the root user to members of a defined group. 
+V-22309  medium   The root account's home directory must not have an extended ACL. 
+V-22310  medium   The root account's library search path must be the system default and must contain only absolute paths. 
+V-22311  medium   The root account's list of preloaded libraries must be empty. 
+V-22312  medium   All files and directories must have a valid group-owner. 
+V-22313  medium   All network services daemon files must not have extended ACLs. 
+V-22314  medium   All system command files must not have extended ACLs. 
+V-22315  medium   System log files must not have extended ACLs, except as needed to support authorized software. 
+V-22316  low      All manual page files must not have extended ACLs. 
+V-22317  medium   All library files must not have extended ACLs. 
+V-22318  medium   NIS/NIS+/yp command files must not have extended ACLs. 
+V-22319  medium   The /etc/resolv.conf file must be owned by root. 
+V-22320  medium   The /etc/resolv.conf file must be group-owned by root, bin, or sys. 
+V-22321  medium   The /etc/resolv.conf file must have mode 0644 or less permissive. 
+V-22322  medium   The /etc/resolv.conf file must not have an extended ACL. 
+V-22323  medium   The /etc/hosts file must be owned by root. 
+V-22324  medium   The /etc/hosts file must be group-owned by root, bin, or sys. 
+V-22325  medium   The /etc/hosts file must have mode 0644 or less permissive. 
+V-22326  medium   The /etc/hosts file must not have an extended ACL. 
+V-22327  medium   The /etc/nsswitch.conf file must be owned by root.
+ 
+V-22328  medium   The /etc/nsswitch.conf file must be group-owned by root, bin, or sys. 
+V-22329  medium   The /etc/nsswitch.conf file must have mode 0644 or less permissive. 
+V-22330  medium   The /etc/nsswitch.conf file must not have an extended ACL. 
+V-22331  low      For systems using DNS resolution, at least two name servers must be configured. 
+V-22332  medium   The /etc/passwd file must be owned by root. 
+V-22333  medium   The /etc/passwd file must be group-owned by root, bin, or sys. 
+V-22334  medium   The /etc/passwd file must not have an extended ACL. 
+V-22335  medium   The /etc/group file must be owned by root. 
+V-22336  medium   The /etc/group file must be group-owned by root, bin, or sys. 
+V-22337  medium   The /etc/group file must have mode 0644 or less permissive. 
+V-22338  medium   The /etc/group file must not have an extended ACL. 
+V-22339  medium   The /etc/shadow file (or equivalent) must be group-owned by root, bin, or sys. 
+V-22340  medium   The /etc/shadow file must not have an extended ACL. 
+V-22341  medium   The /etc/gshadow file must be owned by root. 
+V-22342  medium   The /etc/gshadow file must be group-owned by root.
+ 
+V-22343  medium   The /etc/gshadow file must have mode 0400. 
+V-22344  medium   The /etc/gshadow file must not have an extended ACL. 
+V-22347  medium   The /etc/passwd file must not contain password hashes. 
+V-22348  medium   The /etc/group file must not contain any group password hashes. 
+V-22349  medium   The /etc/gshadow file must not contain any group password hashes. 
+V-22350  low      User home directories must not have extended ACLs. 
+V-22351  medium   All files and directories contained in user home directories must be group-owned by a group of which the home directory's owner is a member. 
+V-22352  medium   All files and directories contained in user home directories must not have extended ACLs. 
+V-22353  medium   All run control scripts must have no extended ACLs. 
+V-22354  medium   Run control scripts' library search paths must contain only absolute paths. 
+V-22355  medium   Run control scripts' lists of preloaded libraries must contain only absolute paths. 
+V-22356  medium   All global initialization files must not have extended ACLs. 
+V-22357  medium   Skeleton files must not have extended ACLs. 
+V-22358  medium   All skeleton files (typically in /etc/skel) must be group-owned by root, bin, sys, system, or other. 
+V-22359  medium   Global initialization files' library search paths must contain only absolute paths. 
+V-22360  medium   Global initialization files' lists of preloaded libraries must contain only absolute paths. 
+V-22361  medium   Local initialization files must be group-owned by the user's primary group or root. 
+V-22362  medium   Local initialization files must not have extended ACLs. 
+V-22363  medium   Local initialization files' library search paths must contain only absolute paths. 
+V-22364  medium   Local initialization files' lists of preloaded libraries must contain only absolute paths. 
+V-22365  medium   All shell files must be group-owned by root, bin, sys, or system. 
+V-22366  medium   All shell files must not have extended ACLs. 
+V-22367  medium   Audio devices must not have extended ACLs. 
+V-22368  medium   Removable media, remote file systems, and any file system not containing approved device files must be mounted with the "nodev" option. 
+V-22369  medium   All system audit files must not have extended ACLs. 
+V-22370  low      System audit tool executables must be owned by root. 
+V-22371  low      System audit tool executables must be group-owned by root, bin, sys, or system. 
+V-22372  low      System audit tool executables must have mode 0750 or less permissive. 
+V-22373  low      System audit tool executables must not have extended ACLs. 
+V-22374  low      The audit system must alert the SA in the event of an audit processing failure. 
+V-22375  medium   The audit system must alert the SA when the audit storage volume approaches its capacity. 
+V-22376  low      The audit system must be configured to audit account creation. 
+V-22377  low      The audit system must be configured to audit account modification. 
+V-22378  low      The audit system must be configured to audit account disabling. 
+V-22382  low      The audit system must be configured to audit account termination. 
+V-22383  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules. 
+V-22384  medium   The cron.allow file must not have an extended ACL. 
+V-22385  medium   Crontab files must be group-owned by root, cron, or the crontab creator's primary group. 
+V-22386  medium   Crontab files must not have extended ACLs. 
+V-22387  medium   Cron and crontab directories must not have extended ACLs. 
+V-22388  medium   The cron log files must not have extended ACLs. 
+V-22389  medium   The cron.deny file must not have an extended ACL. 
+V-22390  medium   The at.allow file must not have an extended ACL. 
+V-22391  medium   The cron.allow file must be group-owned by root, bin, sys, or cron. 
+V-22392  medium   The at.deny file must have mode 0600 or less permissive. 
+V-22393  medium   The at.deny file must not have an extended ACL. 
+V-22394  medium   The cron.deny file must be group-owned by root, bin, or sys. 
+V-22395  medium   The "at" directory must not have an extended ACL. 
+V-22396  medium   The "at" directory must be group-owned by root, bin, sys, or cron. 
+V-22397  medium   The at.allow file must be group-owned by root, bin, sys, or cron. 
+V-22398  medium   The at.deny file must be group-owned by root, bin, sys, or cron. 
+V-22404  medium   Kernel core dumps must be disabled unless needed. 
+V-22405  low      The kernel core dump data directory must be group-owned by root, bin, sys, or system. 
+V-22406  low      The kernel core dump data directory must have mode 0700 or less permissive. 
+V-22407  low      The kernel core dump data directory must not have an extended ACL. 
+V-22408  medium   Network interfaces must not be configured to allow user control. 
+V-22409  low      The system must not process Internet Control Message Protocol (ICMP)  timestamp requests. 
+V-22410  medium   The system must not respond to Internet Control Message Protocol v4 (ICMPv4) echoes sent to a broadcast address. 
+V-22411  medium   The system must not respond to Internet Control Message Protocol (ICMP) timestamp requests sent to a broadcast address. 
+V-22414  medium   The system must not accept source-routed IPv4 packets. 
+V-22415  medium   Proxy Address Resolution Protocol (Proxy ARP) must not be enabled on the system. 
+V-22416  medium   The system must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages. 
+V-22417  medium   The system must not send IPv4 Internet Control Message Protocol (ICMP) redirects. 
+V-22418  low      The system must log martian packets. 
+V-22419  medium   The system must be configured to use TCP syncookies when experiencing a TCP SYN flood. 
+V-22421  medium   The system must not be configured for network bridging. 
+V-22422  low      All local file systems must employ journaling or another mechanism ensuring file system consistency. 
+V-22423  medium   The inetd.conf file, xinetd.conf file, and the xinetd.d directory must be group-owned by root, bin, sys, or system. 
+V-22424  medium   The inetd.conf and xinetd.conf files must not have extended ACLs. 
+V-22425  medium   The xinetd.d directory must have mode 0755 or less permissive. 
+V-22426  medium   The xinetd.d directory must not have an extended ACL. 
+V-22427  medium   The services file must be group-owned by root, bin, sys, or system. 
+V-22428  medium   The services file must not have an extended ACL. 
+V-22429  medium   The portmap or rpcbind service must not be running unless needed. 
+V-22430  medium   The portmap or rpcbind service must not be installed unless needed. 
+V-22431  medium   The rshd service must not be installed. 
+V-22432  medium   The rlogind service must not be running. 
+V-22433  medium   The rlogind service must not be installed. 
+V-22434  medium   The rexecd service must not be installed. 
+V-22435  medium   The hosts.lpd (or equivalent) file must be group-owned by root, bin, sys, or system. 
+V-22436  medium   The hosts.lpd (or equivalent) file must not have an extended ACL. 
+V-22437  medium   The traceroute file must not have an extended ACL. 
+V-22438  medium   The aliases file must be group-owned by root, sys, bin, or system. 
+V-22439  medium   The alias file must not have an extended ACL. 
+V-22440  medium   Files executed through a mail aliases file must be group-owned by root, bin, sys, or system, and must reside within a directory group-owned by root, bin, sys, or system. 
+V-22441  medium   Files executed through a mail aliases file must not have extended ACLs. 
+V-22442  medium   The SMTP service log file must not have an extended ACL. 
+V-22444  medium   The ftpusers file must be group-owned by root, bin, sys, or system. 
+V-22445  medium   The ftpusers file must not have an extended ACL. 
+V-22446  medium   The .Xauthority files must not have extended ACLs. 
+V-22447  medium   The SNMP service must use only SNMPv3 or its successors. 
+V-22448  medium   The SNMP service must require the use of a FIPS 140-2 approved cryptographic hash algorithm as part of its authentication and integrity methods. 
+V-22449  medium   The SNMP service must require the use of a FIPS 140-2 approved encryption algorithm for protecting the privacy of SNMP messages. 
+V-22450  medium   Management Information Base (MIB) files must not have extended ACLs. 
+V-22451  medium   The snmpd.conf file must be group-owned by root, bin, sys, or system. 
+V-22452  medium   The snmpd.conf file must not have an extended ACL. 
+V-22453  medium   The /etc/syslog.conf file must have mode 0640 or less permissive. 
+V-22454  medium   The /etc/syslog.conf file must not have an extended ACL. 
+V-22455  medium   The system must use a remote syslog server (loghost). 
+V-22456  medium   The SSH client must be configured to only use the SSHv2 protocol. 
+V-22457  medium   The SSH daemon must only listen on management network addresses unless authorized for uses other than management. 
+V-22458  medium   The SSH daemon must be configured to only use FIPS 140-2 approved ciphers. 
+V-22459  medium   The SSH daemon must be configured to not use Cipher-Block Chaining (CBC) ciphers. 
+V-22460  medium   The SSH daemon must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms. 
+V-22461  medium   The SSH client must be configured to only use FIPS 140-2 approved ciphers. 
+V-22462  medium   The SSH client must be configured to not use Cipher-Block Chaining (CBC)-based ciphers. 
+V-22463  medium   The SSH client must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms. 
+V-22470  medium   The SSH daemon must restrict login ability to specific users and/or groups. 
+V-22471  medium   The SSH public host key files must have mode 0644 or less permissive. 
+V-22472  medium   The SSH private host key files must have mode 0600 or less permissive. 
+V-22473  low      The SSH daemon must not permit GSSAPI authentication unless needed. 
+V-22474  low      The SSH client must not permit GSSAPI authentication unless needed. 
+V-22475  low      The SSH daemon must not permit Kerberos authentication unless needed. 
+V-22485  medium   The SSH daemon must perform strict mode checking of home directory configuration files. 
+V-22486  medium   The SSH daemon must use privilege separation. 
+V-22487  medium   The SSH daemon must not allow rhosts RSA authentication.
+ 
+V-22488  medium   The SSH daemon must not allow compression or must only allow compression after successful authentication. 
+V-22489  medium   The SSH daemon must be configured with the Department of Defense (DoD) logon banner. 
+V-22490  medium   The system must be configured with a default gateway for IPv6 if the system uses IPv6, unless the system is a router. 
+V-22491  medium   The system must not have IP forwarding for IPv6 enabled, unless the system is an IPv6 router. 
+V-22492  medium   The Network File System (NFS) export configuration file must be group-owned by root, bin, sys, or system. 
+V-22493  low      The Network File System (NFS) exports configuration file must not have an extended ACL. 
+V-22496  medium   All Network File System (NFS) exported system files and system directories must be group-owned by root, bin, sys, or system. 
+V-22497  medium   The /etc/smb.conf file must not have an extended ACL. 
+V-22498  medium   The /etc/smbpasswd file must not have an extended ACL. 
+V-22499  medium   Samba must be configured to use an authentication mechanism other than "share." 
+V-22500  medium   Samba must be configured to use encrypted passwords. 
+V-22501  medium   Samba must be configured to not allow guest access to shares. 
+V-22502  medium   The /etc/news/incoming.conf file must not have an extended ACL. 
+V-22503  medium   The /etc/news/hosts.nntp.nolimit file must not have an extended ACL. 
+V-22504  medium   The /etc/news/nnrp.access file must not have an extended ACL. 
+V-22505  medium   The /etc/news/passwd.nntp file must not have an extended ACL. 
+V-22506  medium   The system package management tool must be used to verify system software periodically. 
+V-22507  low      The file integrity tool must be configured to verify ACLs. 
+V-22508  low      The file integrity tool must be configured to verify extended attributes. 
+V-22509  low      The file integrity tool must use FIPS 140-2 approved cryptographic hashes for validating file contents. 
+V-22511  medium   The Stream Control Transmission Protocol (SCTP) must be disabled unless required. 
+V-22514  medium   The Datagram Congestion Control Protocol (DCCP) must be disabled unless required. 
+V-22524  medium   The AppleTalk protocol must be disabled or not installed. 
+V-22530  medium   The Reliable Datagram Sockets (RDS) protocol must be disabled or not installed unless required. 
+V-22533  medium   The Transparent Inter-Process Communication (TIPC) protocol must be disabled or uninstalled. 
+V-22539  medium   The Bluetooth protocol handler must be disabled or not installed. 
+V-22541  medium   The IPv6 protocol handler must not be bound to the network stack unless needed. 
+V-22542  medium   The IPv6 protocol handler must be prevented from dynamic loading unless needed. 
+V-22545  medium   The system must not have 6to4 enabled. 
+V-22546  medium   The system must not have Teredo enabled. 
+V-22547  medium   The system must not have IP tunnels configured. 
+V-22548  medium   The DHCP client must be disabled if not needed. 
+V-22549  medium   The DHCP client must not send dynamic DNS updates. 
+V-22550  medium   The system must ignore IPv6 ICMP redirect messages. 
+V-22553  medium   The system must not forward IPv6 source-routed packets. 
+V-22555  medium   If the system is using LDAP for authentication or account information, the system must use a TLS connection using FIPS 140-2 approved cryptographic algorithms. 
+V-22556  medium   If the system is using LDAP for authentication or account information, certificates used to authenticate to the LDAP server must be provided from DoD PKI or a DoD-approved external PKI. 
+V-22557  medium   If the system is using LDAP for authentication or account information, the LDAP TLS connection must require the server provide a certificate with a valid trust path to a trusted CA. 
+V-22558  medium   If the system is using LDAP for authentication or account information, the system must verify the LDAP server's certificate has not been revoked. 
+V-22559  medium   If the system is using LDAP for authentication or account information the /etc/ldap.conf (or equivalent) file must have mode 0644 or less permissive. 
+V-22560  medium   If the system is using LDAP for authentication or account information, the /etc/ldap.conf (or equivalent) file must be owned by root. 
+V-22561  medium   If the system is using LDAP for authentication or account information, the /etc/ldap.conf (or equivalent) file must be group-owned by root, bin, sys, or system. 
+V-22562  medium   If the system is using LDAP for authentication or account information, the /etc/ldap.conf (or equivalent) file must not have an extended ACL. 
+V-22563  medium   If the system is using LDAP for authentication or account information, the TLS certificate authority file and/or directory (as appropriate) must be owned by root. 
+V-22564  medium   If the system is using LDAP for authentication or account information, the TLS certificate authority file and/or directory (as appropriate) must be group-owned by root, bin, sys, or system. 
+V-22565  medium   If the system is using LDAP for authentication or account information, the TLS certificate authority file and/or directory (as appropriate) must have mode 0644 (0755 for directories) or less permissive. 
+V-22566  medium   If the system is using LDAP for authentication or account information, the LDAP TLS certificate authority file and/or directory (as appropriate) must not have an extended ACL. 
+V-22567  medium   For systems using NSS LDAP, the TLS certificate file must be owned by root. 
+V-22568  medium   If the system is using LDAP for authentication or account information, the LDAP TLS certificate file must be group-owned by root, bin, sys, or system. 
+V-22569  medium   If the system is using LDAP for authentication or account information, the LDAP TLS certificate file must have mode 0644 or less permissive. 
+V-22570  medium   If the system is using LDAP for authentication or account information, the LDAP TLS certificate file must not have an extended ACL. 
+V-22571  medium   If the system is using LDAP for authentication or account information, the LDAP TLS key file must be owned by root. 
+V-22572  medium   If the system is using LDAP for authentication or account information, the LDAP TLS key file must be group-owned by root, bin, or sys. 
+V-22573  medium   If the system is using LDAP for authentication or account information, the LDAP TLS key file must have mode 0600 or less permissive. 
+V-22574  medium   If the system is using LDAP for authentication or account information, the LDAP TLS key file must not have an extended ACL. 
+V-22575  medium   A root kit check tool must be run on the system at least weekly. 
+V-22576  low      The system must use available memory address randomization techniques. 
+V-22577  low      Automated file system mounting tools must not be enabled unless needed. 
+V-22578  low      The system must have USB disabled unless needed. 
+V-22579  low      The system must have USB Mass Storage disabled unless needed. 
+V-22580  low      The system must have IEEE 1394 (Firewire) disabled unless needed. 
+V-22582  medium   The system must employ a local firewall. 
+V-22583  medium   The system's local firewall must implement a deny-all, allow-by-exception policy. 
+V-22584  low      The system must use a Linux Security Module configured to limit the privileges of system services. 
+V-22585  medium   The system's boot loader configuration file(s) must not have extended ACLs. 
+V-22586  medium   The system's boot loader configuration files must be owned by root. 
+V-22587  medium   The system's boot loader configuration file(s) must be group-owned by root, bin, sys, or system. 
+V-22588  low      The system package management tool must cryptographically verify the authenticity of software packages during installation. 
+V-22589  low      The system package management tool must not automatically obtain updates. 
+V-22595  medium   The access.conf file must not have an extended ACL. 
+V-22596  medium   The /etc/sysctl.conf file must not have an extended ACL. 
+V-22598  low      Auditing must be enabled at boot by setting a kernel parameter. 
+V-22665  medium   The system must not be running any routing protocol daemons, unless the system is a router. 
+V-22702  medium   System audit logs must be group-owned by root, bin, sys, or system. 
+V-23732  medium   The FTPS/FTP service on the system must be configured with the Department of Defense (DoD) login banner. 
+V-23736  low      The system must use a separate file system for /var. 
+V-23738  low      The system must use a separate file system for the system audit data path. 
+V-23739  low      The system must use a separate file system for /tmp (or equivalent). 
+V-23741  medium   TCP backlog queue sizes must be set appropriately. 
+V-23952  medium   Mail relaying must be restricted. 
+V-23953  medium   The 'ldd' command must be disabled unless it protects against the execution of untrusted files. 
+V-23972  medium   The system must not respond to ICMPv6 echo requests sent to a broadcast address. 
+V-24331  medium   The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts. 
+V-24347  medium   The system, if capable, must be configured to require the use of a CAC, PIV compliant hardware token, or Alternate Logon Token (ALT) for authentication. 
+V-24357  low      The system must be configured to send audit/system records to a remote audit server. 
+V-24384  medium   If the system is using LDAP for authentication or account information, the /etc/ldap.conf file (or equivalent) must not contain passwords. 
+V-24386  high     The telnet daemon must not be running. 
+V-24624  medium   The system boot loader must protect passwords using an MD5 or stronger cryptographic hash. 
+V-27250  medium   A file integrity baseline including cryptographic hashes must be created. 
+V-27251  medium   A file integrity baseline including cryptographic hashes must be maintained.
+
+ 
+V-27275  medium   The system must not have the unnecessary "news" account. 
+V-27276  medium   The system must not have the unnecessary "gopher" account. 
+V-27279  medium   The system must not have the unnecessary "ftp" account. 
+V-27283  medium   The graphical desktop environment must set the idle timeout to no more than 15 minutes. 
+V-27284  medium   Graphical desktop environments provided by the system must have automatic lock enabled. 
+V-27285  medium   Global settings defined in system-auth must be applied in the pam.d definition files.
+ 
+V-29236  medium   The audit system must be configured to audit failed attempts to access files and programs. 
+V-29237  medium   The audit system must be configured to audit failed attempts to access files and programs. 
+V-29238  medium   The audit system must be configured to audit failed attempts to access files and programs. 
+V-29239  medium   The audit system must be configured to audit failed attempts to access files and programs. 
+V-29240  medium   The audit system must be configured to audit file deletions. 
+V-29241  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29242  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29243  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29244  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29245  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29246  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29247  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29248  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29249  medium   The audit system must be configured to audit all administrative, privileged, and security actions. 
+V-29250  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29251  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29252  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29253  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29255  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29257  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29259  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29261  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29272  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29274  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29275  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29279  medium   The audit system must be configured to audit all discretionary access control permission modifications. 
+V-29281  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules - delete_module. 
+V-29284  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules - /sbin/insmod. 
+V-29286  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules -/sbin/modprobe. 
+V-29288  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules - /sbin/rmmod 
+V-29289  medium   Files in cron script directories must have mode 0700 or less permissive. 
+V-29376  medium   The system must not have the unnecessary "games" account. 
+V-38692  low      Accounts must be locked upon 35 days of inactivity. 
+V-38437  low      Automated file system mounting tools must not be enabled unless needed. 
+V-38438  low      Auditing must be enabled at boot by setting a kernel parameter. 
+V-38439  medium   The system must provide automated support for account management functions. 
+V-38443  medium   The /etc/gshadow file must be owned by root. 
+V-38444  medium   The systems local IPv6 firewall must implement a deny-all, allow-by-exception policy for inbound packets. 
+V-38445  medium   Audit log files must be group-owned by root. 
+V-38446  medium   The mail system must forward all mail for root to one or more system administrators. 
+V-38447  low      The system package management tool must verify contents of all files associated with packages. 
+V-38448  medium   The /etc/gshadow file must be group-owned by root. 
+V-38449  medium   The /etc/gshadow file must have mode 0000. 
+V-38450  medium   The /etc/passwd file must be owned by root. 
+V-38451  medium   The /etc/passwd file must be group-owned by root. 
+V-38452  low      The system package management tool must verify permissions on all files and directories associated with packages. 
+V-38453  low      The system package management tool must verify group-ownership on all files and directories associated with packages. 
+V-38454  low      The system package management tool must verify ownership on all files and directories associated with packages. 
+V-38455  low      The system must use a separate file system for /tmp. 
+V-38456  low      The system must use a separate file system for /var. 
+V-38457  medium   The /etc/passwd file must have mode 0644 or less permissive. 
+V-38458  medium   The /etc/group file must be owned by root. 
+V-38459  medium   The /etc/group file must be group-owned by root. 
+V-38460  low      The NFS server must not have the all_squash option enabled. 
+V-38461  medium   The /etc/group file must have mode 0644 or less permissive. 
+V-38462  high     The RPM package management tool must cryptographically verify the authenticity of all software packages during installation. 
+V-38463  low      The system must use a separate file system for /var/log. 
+V-38464  medium   The audit system must take appropriate action when there are disk errors on the audit storage volume. 
+V-38465  medium   Library files must have mode 0755 or less permissive. 
+V-38466  medium   Library files must be owned by root. 
+V-38467  low      The system must use a separate file system for the system audit data path. 
+V-38468  medium   The audit system must take appropriate action when the audit storage volume is full. 
+V-38469  medium   All system command files must have mode 0755 or less permissive. 
+V-38470  medium   The audit system must alert designated staff members when the audit storage volume approaches capacity. 
+V-38471  low      The system must forward audit records to the syslog service. 
+V-38472  medium   All system command files must be owned by root. 
+V-38473  low      The system must use a separate file system for user home directories. 
+V-38474  low      The system must allow locking of graphical desktop sessions. 
+V-38475  medium   The system must require passwords to contain a minimum of 14 characters. 
+V-38476  high     Vendor-provided cryptographic certificates must be installed to verify the integrity of system software. 
+V-38477  medium   Users must not be able to change passwords more than once every 24 hours. 
+V-38478  low      The Red Hat Network Service (rhnsd) service must not be running, unless using RHN or an RHN Satellite. 
+V-38479  medium   User passwords must be changed at least every 60 days. 
+V-38480  low      Users must be warned 7 days in advance of password expiration. 
+V-38481  medium   System security patches and updates must be installed and up-to-date. 
+V-38482  low      The system must require passwords to contain at least one numeric character. 
+V-38483  medium   The system package management tool must cryptographically verify the authenticity of system software packages during installation. 
+V-38484  medium   The operating system, upon successful logon, must display to the user the date and time of the last logon or access via ssh. 
+V-38486  medium   The operating system must conduct backups of system-level information contained in the information system per organization defined frequency to conduct backups that are consistent with recovery time and recovery point objectives. 
+V-38487  low      The system package management tool must cryptographically verify the authenticity of all software packages during installation. 
+V-38488  medium   The operating system must conduct backups of user-level information contained in the operating system per organization defined frequency to conduct backups consistent with recovery time and recovery point objectives. 
+V-38489  medium   A file integrity tool must be installed. 
+V-38490  medium   The operating system must enforce requirements for the connection of mobile devices to operating systems. 
+V-38491  high     There must be no .rhosts or hosts.equiv files on the system. 
+V-38492  medium   The system must prevent the root account from logging in from virtual consoles. 
+V-38493  medium   Audit log directories must have mode 0755 or less permissive. 
+V-38494  low      The system must prevent the root account from logging in from serial consoles. 
+V-38495  medium   Audit log files must be owned by root. 
+V-38496  medium   Default operating system accounts, other than root, must be locked. 
+V-38497  high     The system must not have accounts configured with blank or null passwords. 
+V-38498  medium   Audit log files must have mode 0640 or less permissive. 
+V-38499  medium   The /etc/passwd file must not contain password hashes. 
+V-38500  medium   The root account must be the only account having a UID of 0. 
+V-38501  medium   The system must disable accounts after excessive login failures within a 15-minute interval. 
+V-38502  medium   The /etc/shadow file must be owned by root. 
+V-38503  medium   The /etc/shadow file must be group-owned by root. 
+V-38504  medium   The /etc/shadow file must have mode 0000. 
+V-38511  medium   IP forwarding for IPv4 must not be enabled, unless the system is a router. 
+V-38512  medium   The operating system must prevent public IPv4 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices. 
+V-38513  medium   The systems local IPv4 firewall must implement a deny-all, allow-by-exception policy for inbound packets. 
+V-38514  medium   The Datagram Congestion Control Protocol (DCCP) must be disabled unless required. 
+V-38515  medium   The Stream Control Transmission Protocol (SCTP) must be disabled unless required. 
+V-38516  low      The Reliable Datagram Sockets (RDS) protocol must be disabled unless required. 
+V-38517  medium   The Transparent Inter-Process Communication (TIPC) protocol must be disabled unless required. 
+V-38518  medium   All rsyslog-generated log files must be owned by root. 
+V-38519  medium   All rsyslog-generated log files must be group-owned by root.All rsyslog-generated log files must be group-owned by root. 
+V-38520  medium   The operating system must back up audit records on an organization defined frequency onto a different system or media than the system being audited. 
+V-38521  medium   The operating system must support the requirement to centrally manage the content of audit records generated by organization defined information system components. 
+V-38522  low      The audit system must be configured to audit all attempts to alter system time through settimeofday. 
+V-38523  medium   The system must not accept IPv4 source-routed packets on any interface. 
+V-38524  medium   The system must not accept ICMPv4 redirect packets on any interface. 
+V-38525  low      The audit system must be configured to audit all attempts to alter system time through stime. 
+V-38526  medium   The system must not accept ICMPv4 secure redirect packets on any interface. 
+V-38527  low      The audit system must be configured to audit all attempts to alter system time through clock_settime. 
+V-38528  low      The system must log Martian packets. 
+V-38529  medium   The system must not accept IPv4 source-routed packets by default. 
+V-38530  low      The audit system must be configured to audit all attempts to alter system time through /etc/localtime. 
+V-38531  low      The operating system must automatically audit account creation. 
+V-38532  medium   The system must not accept ICMPv4 secure redirect packets by default. 
+V-38533  low      The system must ignore ICMPv4 redirect messages by default. 
+V-38534  low      The operating system must automatically audit account modification. 
+V-38535  low      The system must not respond to ICMPv4 sent to a broadcast address. 
+V-38536  low      The operating system must automatically audit account disabling actions. 
+V-38537  low      The system must ignore ICMPv4 bogus error responses. 
+V-38538  low      The operating system must automatically audit account termination. 
+V-38539  medium   The system must be configured to use TCP syncookies. 
+V-38540  low      The audit system must be configured to audit modifications to the systems network configuration. 
+V-38541  low      The audit system must be configured to audit modifications to the systems Mandatory Access Control (MAC) configuration (SELinux). 
+V-38542  medium   The system must use a reverse-path filter for IPv4 network traffic when possible on all interfaces. 
+V-38543  low      The audit system must be configured to audit all discretionary access control permission modifications using chmod. 
+V-38544  medium   The system must use a reverse-path filter for IPv4 network traffic when possible by default. 
+V-38545  low      The audit system must be configured to audit all discretionary access control permission modifications using chown. 
+V-38546  medium   The IPv6 protocol handler must not be bound to the network stack unless needed. 
+V-38547  low      The audit system must be configured to audit all discretionary access control permission modifications using fchmod. 
+V-38548  medium   The system must ignore ICMPv6 redirects by default. 
+V-38549  medium   The system must employ a local IPv6 firewall. 
+V-38550  low      The audit system must be configured to audit all discretionary access control permission modifications using fchmodat. 
+V-38551  medium   The operating system must connect to external networks or information systems only through managed IPv6 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture. 
+V-38552  low      The audit system must be configured to audit all discretionary access control permission modifications using fchown. 
+V-38553  medium   The operating system must prevent public IPv6 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices. 
+V-38554  low      The audit system must be configured to audit all discretionary access control permission modifications using fchownat. 
+V-38555  medium   The system must employ a local IPv4 firewall. 
+V-38556  low      The audit system must be configured to audit all discretionary access control permission modifications using fremovexattr. 
+V-38557  low      The audit system must be configured to audit all discretionary access control permission modifications using fsetxattr. 
+V-38558  low      The audit system must be configured to audit all discretionary access control permission modifications using lchown. 
+V-38559  low      The audit system must be configured to audit all discretionary access control permission modifications using lremovexattr. 
+V-38560  medium   The operating system must connect to external networks or information systems only through managed IPv4 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture. 
+V-38561  low      The audit system must be configured to audit all discretionary access control permission modifications using lsetxattr. 
+V-38563  low      The audit system must be configured to audit all discretionary access control permission modifications using removexattr. 
+V-38565  low      The audit system must be configured to audit all discretionary access control permission modifications using setxattr. 
+V-38566  low      The audit system must be configured to audit failed attempts to access files and programs. 
+V-38567  low      The audit system must be configured to audit all use of setuid and setgid programs. 
+V-38568  low      The audit system must be configured to audit successful file system mounts. 
+V-38569  low      The system must require passwords to contain at least one uppercase alphabetic character. 
+V-38570  low      The system must require passwords to contain at least one special character. 
+V-38571  low      The system must require passwords to contain at least one lowercase alphabetic character. 
+V-38572  low      The system must require at least four characters be changed between the old and new passwords during a password change. 
+V-38573  medium   The system must disable accounts after three consecutive unsuccessful logon attempts. 
+V-38574  medium   The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (system-auth). 
+V-38575  low      The audit system must be configured to audit user deletions of files and programs. 
+V-38576  medium   The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (login.defs). 
+V-38577  medium   The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (libuser.conf). 
+V-38578  low      The audit system must be configured to audit changes to the /etc/sudoers file. 
+V-38579  medium   The system boot loader configuration file(s) must be owned by root. 
+V-38580  medium   The audit system must be configured to audit the loading and unloading of dynamic kernel modules. 
+V-38581  medium   The system boot loader configuration file(s) must be group-owned by root. 
+V-38582  medium   The xinetd service must be disabled if no network services utilizing it are enabled. 
+V-38583  medium   The system boot loader configuration file(s) must have mode 0600 or less permissive. 
+V-38584  low      The xinetd service must be uninstalled if no network services utilizing it are enabled. 
+V-38585  medium   The system boot loader must require authentication. 
+V-38586  medium   The system must require authentication upon booting into single-user and maintenance modes. 
+V-38587  high     The telnet-server package must not be installed. 
+V-38588  medium   The system must not permit interactive boot. 
+V-38589  high     The telnet daemon must not be running. 
+V-38590  low      The system must allow locking of the console screen in text mode. 
+V-38591  high     The rsh-server package must not be installed. 
+V-38592  medium   The system must require administrator action to unlock an account locked by excessive failed login attempts. 
+V-38593  medium   The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, console login prompts. 
+V-38594  high     The rshd service must not be running. 
+V-38595  medium   The system must be configured to require the use of a CAC, PIV compliant hardware token, or Alternate Logon Token (ALT) for authentication. 
+V-38596  medium   The system must implement virtual address space randomization. 
+V-38597  medium   The system must limit the ability of processes to have simultaneous write and execute access to memory. 
+V-38598  high     The rexecd service must not be running. 
+V-38599  medium   The FTPS/FTP service on the system must be configured with the Department of Defense (DoD) login banner. 
+V-38600  medium   The system must not send ICMPv4 redirects by default. 
+V-38601  medium   The system must not send ICMPv4 redirects from any interface. 
+V-38602  high     The rlogind service must not be running. 
+V-38603  medium   The ypserv package must not be installed. 
+V-38604  medium   The ypbind service must not be running. 
+V-38605  medium   The cron service must be running. 
+V-38606  medium   The tftp-server package must not be installed. 
+V-38607  high     The SSH daemon must be configured to use only the SSHv2 protocol. 
+V-38608  low      The SSH daemon must set a timeout interval on idle sessions. 
+V-38609  medium   The TFTP service must not be running. 
+V-38610  low      The SSH daemon must set a timeout count on idle sessions. 
+V-38611  medium   The SSH daemon must ignore .rhosts files. 
+V-38612  medium   The SSH daemon must not allow host-based authentication. 
+V-38613  medium   The system must not permit root logins using remote access programs such as ssh. 
+V-38614  high     The SSH daemon must not allow authentication using an empty password. 
+V-38615  medium   The SSH daemon must be configured with the Department of Defense (DoD) login banner. 
+V-38616  low      The SSH daemon must not permit user environment settings. 
+V-38617  medium   The SSH daemon must be configured to use only FIPS 140-2 approved ciphers. 
+V-38618  low      The avahi service must be disabled. 
+V-38619  medium   There must be no .netrc files on the system. 
+V-38620  medium   The system clock must be synchronized continuously, or at least daily. 
+V-38621  medium   The system clock must be synchronized to an authoritative DoD time source. 
+V-38622  medium   Mail relaying must be restricted. 
+V-38623  medium   All rsyslog-generated log files must have mode 0600 or less permissive. 
+V-38624  low      System logs must be rotated daily. 
+V-38625  medium   If the system is using LDAP for authentication or account information, the system must use a TLS connection using FIPS 140-2 approved cryptographic algorithms. 
+V-38626  medium   The LDAP client must use a TLS connection using trust certificates signed by the site CA. 
+V-38627  low      The openldap-servers package must not be installed unless required. 
+V-38628  medium   The operating system must produce audit records containing sufficient information to establish the identity of any user/subject associated with the event. 
+V-38629  medium   The graphical desktop environment must set the idle timeout to no more than 15 minutes. 
+V-38630  medium   The graphical desktop environment must automatically lock after 15 minutes of inactivity and the system must require user reauthentication to unlock the environment. 
+V-38631  medium   The operating system must employ automated mechanisms to facilitate the monitoring and control of remote access methods. 
+V-38632  medium   The operating system must produce audit records containing sufficient information to establish what type of events occurred. 
+V-38633  medium   The system must set a maximum audit log file size. 
+V-38634  medium   The system must rotate audit log files that reach the maximum file size. 
+V-38635  low      The audit system must be configured to audit all attempts to alter system time through adjtimex. 
+V-38636  medium   The system must retain enough rotated audit logs to cover the required log retention period. 
+V-38637  medium   The system package management tool must verify contents of all files associated with the audit package. 
+V-38638  medium   The graphical desktop environment must have automatic lock enabled. 
+V-38639  low      The system must display a publicly-viewable pattern during a graphical desktop environment session lock. 
+V-38640  low      The Automatic Bug Reporting Tool (abrtd) service must not be running. 
+V-38641  low      The atd service must be disabled. 
+V-38642  low      The system default umask for daemons must be 027 or 022. 
+V-38643  medium   There must be no world-writable files on the system. 
+V-38644  low      The ntpdate service must not be running. 
+V-38645  low      The system default umask in /etc/login.defs must be 077. 
+V-38646  low      The oddjobd service must not be running. 
+V-38647  low      The system default umask in /etc/profile must be 077. 
+V-38648  low      The qpidd service must not be running. 
+V-38649  low      The system default umask for the csh shell must be 077. 
+V-38650  low      The rdisc service must not be running. 
+V-38651  low      The system default umask for the bash shell must be 077. 
+V-38652  medium   Remote file systems must be mounted with the nodev option. 
+V-38653  high     The snmpd service must not use a default password. 
+V-38654  medium   Remote file systems must be mounted with the nosuid option. 
+V-38655  low      The noexec option must be added to removable media partitions. 
+V-38656  low      The system must use SMB client signing for connecting to samba servers using smbclient. 
+V-38657  low      The system must use SMB client signing for connecting to samba servers using mount.cifs. 
+V-38658  medium   The system must prohibit the reuse of passwords within twenty-four iterations. 
+V-38659  low      The operating system must employ cryptographic mechanisms to protect information in storage. 
+V-38660  medium   The snmpd service must use only SNMP protocol version 3 or newer. 
+V-38661  low      The operating system must protect the confidentiality and integrity of data at rest.  
+V-38662  low      The operating system must employ cryptographic mechanisms to prevent unauthorized disclosure of data at rest unless otherwise protected by alternative physical measures. 
+V-38663  medium   The system package management tool must verify permissions on all files and directories associated with the audit package. 
+V-38664  medium   The system package management tool must verify ownership on all files and directories associated with the audit package. 
+V-38665  medium   The system package management tool must verify group-ownership on all files and directories associated with the audit package. 
+V-38666  high     The system must use and update a DoD-approved virus scan program. 
+V-38667  medium   The system must have a host-based intrusion detection tool installed. 
+V-38668  high     The x86 Ctrl-Alt-Delete key sequence must be disabled. 
+V-38669  low      The postfix service must be enabled for mail delivery. 
+V-38670  medium   The operating system must detect unauthorized changes to software and information.  
+V-38671  medium   The sendmail package must be removed. 
+V-38672  low      The netconsole service must be disabled unless required. 
+V-38673  medium   The operating system must ensure unauthorized, security-relevant configuration changes detected are tracked. 
+V-38674  medium   X Windows must not be enabled unless required. 
+V-38675  low      Process core dumps must be disabled unless needed. 
+V-38676  low      The xorg-x11-server-common (X Windows) package must not be installed, unless required. 
+V-38677  high     The NFS server must not have the insecure file locking option enabled. 
+V-38678  medium   The audit system must provide a warning when allocated audit record storage volume reaches a documented percentage of maximum audit record storage capacity. 
+V-38679  medium   The DHCP client must be disabled if not needed. 
+V-38680  medium   The audit system must identify staff members to receive notifications of audit log storage volume capacity issues. 
+V-38681  low      All GIDs referenced in /etc/passwd must be defined in /etc/group 
+V-38682  medium   The Bluetooth kernel module must be disabled. 
+V-38683  low      All accounts on the system must have unique user or account names 
+V-38684  low      The system must limit users to 10 simultaneous system logins, or a site-defined number, in accordance with operational requirements. 
+V-38685  low      Temporary accounts must be provisioned with an expiration date. 
+V-38686  medium   The systems local firewall must implement a deny-all, allow-by-exception policy for forwarded packets. 
+V-38687  low      The system must provide VPN connectivity for communications over untrusted networks. 
+V-38688  medium   A login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts. 
+V-38689  medium   The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts. 
+V-38690  low      Emergency accounts must be provisioned with an expiration date.
+ 
+V-38691  medium   The Bluetooth service must be disabled. 
+V-38692  low      Accounts must be locked upon 35 days of inactivity. 
+V-38693  low      The system must require passwords to contain no more than three consecutive repeating characters. 
+V-38694  low      The operating system must manage information system identifiers for users and devices by disabling the user identifier after an organization defined time period of inactivity. 
+V-38695  medium   A file integrity tool must be used at least weekly to check for unauthorized file changes, particularly the addition of unauthorized system libraries or binaries, or for unauthorized modification to authorized system libraries or binaries. 
+V-38696  medium   The operating system must employ automated mechanisms, per organization defined frequency, to detect the addition of unauthorized components/devices into the operating system. 
+V-38697  low      The sticky bit must be set on all public directories. 
+V-38698  medium   The operating system must employ automated mechanisms to detect the presence of unauthorized software on organizational information systems and notify designated organizational officials in accordance with the organization defined frequency. 
+V-38699  low      All public directories must be owned by a system account. 
+V-38700  medium   The operating system must provide a near real-time alert when any of the organization defined list of compromise or potential compromise indicators occurs.  
+V-38701  high     The TFTP daemon must operate in secure mode which provides access only to a single directory on the host file system. 
+V-38702  low      The FTP daemon must be configured for logging or verbose mode. 
+V-43150  medium   The login user list must be disabled. 
+V-51337  medium   The system must use a Linux Security Module at boot time. 
+V-51363  medium   The system must use a Linux Security Module configured to enforce limits on system services. 
+V-51369  low      The system must use a Linux Security Module configured to limit the privileges of system services. 
+V-51379  low      All device files must be monitored by the system Linux Security Module. 
+V-51391  medium   A file integrity baseline must be created. 
+V-51875  medium   The operating system, upon successful logon/access, must display to the user the number of unsuccessful logon/access attempts since the last successful logon/access. 
+V-54381  medium   The audit system must switch the system to single-user mode when available audit storage volume becomes dangerously low. 
+V-57569  medium   The noexec option must be added to the /tmp partition. 
